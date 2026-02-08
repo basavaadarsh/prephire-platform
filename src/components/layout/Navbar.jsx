@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
@@ -18,8 +19,22 @@ const Navbar = () => {
 
       {/* Navigation Links */}
       <div className="hidden lg:flex items-center gap-8">
-        <a href="#" className="text-[#2563eb] font-semibold text-sm">Home</a>
-        <a href="#" className="text-gray-600 hover:text-gray-900 font-medium text-sm transition-colors">About</a>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            `text-sm font-medium transition-colors ${isActive ? 'text-[#2563eb] font-semibold' : 'text-gray-600 hover:text-gray-900'}`
+          }
+        >
+          Home
+        </NavLink>
+        <NavLink
+          to="/about"
+          className={({ isActive }) =>
+            `text-sm font-medium transition-colors ${isActive ? 'text-[#2563eb] font-semibold' : 'text-gray-600 hover:text-gray-900'}`
+          }
+        >
+          About
+        </NavLink>
         <a href="#" className="text-gray-600 hover:text-gray-900 font-medium text-sm transition-colors">Services</a>
         <a href="#" className="text-gray-600 hover:text-gray-900 font-medium text-sm transition-colors">Courses</a>
         <a href="#" className="text-gray-600 hover:text-gray-900 font-medium text-sm transition-colors">Job Board</a>
