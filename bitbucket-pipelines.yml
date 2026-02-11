@@ -1,16 +1,17 @@
 image: atlassian/default-image:3
 
 pipelines:
-  default:
-    - step:
-        name: Sync Bitbucket to GitHub
-        script:
-          - git config --global user.email "sync@prephire.com"
-          - git config --global user.name "PrepHire Sync Bot"
+  branches:
+    "**":
+      - step:
+          name: Sync Bitbucket to GitHub
+          script:
+            - git config --global user.email "sync@prephire.com"
+            - git config --global user.name "PrepHire Sync Bot"
 
-          # connect github using token
-          - git remote add github https://x-token-auth:$GITHUB_TOKEN@github.com/basavaadarsh/prephire-platform.git
+            # connect github using token
+            - git remote add github https://x-token-auth:$GITHUB_TOKEN@github.com/basavaadarsh/prephire-platform.git
 
-          # push all branches and tags
-          - git push github --all
-          - git push github --tags
+            # push all branches and tags
+            - git push github --all
+            - git push github --tags
