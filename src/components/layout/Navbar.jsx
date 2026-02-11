@@ -5,47 +5,89 @@ const Navbar = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
 
   return (
-    <nav className="bg-white border-b border-gray-100 py-3 px-6 md:px-12 flex items-center justify-between sticky top-0 z-50">
+    <nav className="navbar navbar-expand-lg bg-white border-bottom py-3 px-3 px-md-5 sticky-top z-3 justify-content-between">
       {/* Logo Section */}
-      <div className="flex items-center gap-3">
-        <div className="bg-[#2563eb] w-10 h-10 rounded-lg flex items-center justify-center">
-          <span className="text-white text-xl font-bold">P</span>
+      <div className="d-flex align-items-center gap-3">
+        <div style={{ backgroundColor: '#2563eb', width: '40px', height: '40px' }} className="rounded-3 d-flex align-items-center justify-content-center">
+          <span className="text-white fs-5 fw-bold">P</span>
         </div>
         <div>
-          <h1 className="text-xl font-bold text-gray-900 leading-tight">PrepHire</h1>
-          <p className="text-[10px] text-gray-500 font-medium">Prepare. Perform. Get Hired.</p>
+          <h1 className="fs-5 fw-bold text-dark m-0 lh-1">PrepHire</h1>
+          <p className="m-0 text-secondary fw-medium" style={{ fontSize: '10px' }}>Prepare. Perform. Get Hired.</p>
         </div>
       </div>
 
       {/* Navigation Links */}
-      <div className="hidden lg:flex items-center gap-8">
+      <div className="d-none d-lg-flex align-items-center gap-4">
         <NavLink
           to="/"
           className={({ isActive }) =>
-            `text-sm font-medium transition-colors ${isActive ? 'text-[#2563eb] font-semibold' : 'text-gray-600 hover:text-gray-900'}`
+            `text-decoration-none small fw-medium ${isActive ? 'text-primary fw-bold' : 'text-secondary hover-dark'}`
           }
+          style={({ isActive }) => ({ color: isActive ? '#2563eb' : '' })}
         >
           Home
         </NavLink>
         <NavLink
           to="/about"
           className={({ isActive }) =>
-            `text-sm font-medium transition-colors ${isActive ? 'text-[#2563eb] font-semibold' : 'text-gray-600 hover:text-gray-900'}`
+            `text-decoration-none small fw-medium ${isActive ? 'text-primary fw-bold' : 'text-secondary hover-dark'}`
           }
+          style={({ isActive }) => ({ color: isActive ? '#2563eb' : '' })}
         >
           About
         </NavLink>
-        <a href="#" className="text-gray-600 hover:text-gray-900 font-medium text-sm transition-colors">Services</a>
-        <a href="#" className="text-gray-600 hover:text-gray-900 font-medium text-sm transition-colors">Courses</a>
-        <a href="#" className="text-gray-600 hover:text-gray-900 font-medium text-sm transition-colors">Job Board</a>
-        <a href="#" className="text-gray-600 hover:text-gray-900 font-medium text-sm transition-colors">Careers</a>
-        <a href="#" className="text-gray-600 hover:text-gray-900 font-medium text-sm transition-colors">Contact</a>
+        <NavLink
+          to="/services"
+          className={({ isActive }) =>
+            `text-decoration-none small fw-medium ${isActive ? 'text-primary fw-bold' : 'text-secondary hover-dark'}`
+          }
+          style={({ isActive }) => ({ color: isActive ? '#2563eb' : '' })}
+        >
+          Services
+        </NavLink>
+        <NavLink
+          to="/courses"
+          className={({ isActive }) =>
+            `text-decoration-none small fw-medium ${isActive ? 'text-primary fw-bold' : 'text-secondary hover-dark'}`
+          }
+          style={({ isActive }) => ({ color: isActive ? '#2563eb' : '' })}
+        >
+          Courses
+        </NavLink>
+        <NavLink
+          to="/job-board"
+          className={({ isActive }) =>
+            `text-decoration-none small fw-medium ${isActive ? 'text-primary fw-bold' : 'text-secondary hover-dark'}`
+          }
+          style={({ isActive }) => ({ color: isActive ? '#2563eb' : '' })}
+        >
+          Job Board
+        </NavLink>
+        <NavLink
+          to="/careers"
+          className={({ isActive }) =>
+            `text-decoration-none small fw-medium ${isActive ? 'text-primary fw-bold' : 'text-secondary hover-dark'}`
+          }
+          style={({ isActive }) => ({ color: isActive ? '#2563eb' : '' })}
+        >
+          Careers
+        </NavLink>
+        <NavLink
+          to="/contact"
+          className={({ isActive }) =>
+            `text-decoration-none small fw-medium ${isActive ? 'text-primary fw-bold' : 'text-secondary hover-dark'}`
+          }
+          style={({ isActive }) => ({ color: isActive ? '#2563eb' : '' })}
+        >
+          Contact
+        </NavLink>
       </div>
 
       {/* Auth Buttons */}
-      <div className="flex items-center gap-4">
+      <div className="d-flex align-items-center gap-3">
         <button
-          className="flex items-center gap-1 text-gray-700 font-medium text-sm hover:text-gray-900 transition-colors"
+          className="btn btn-link d-flex align-items-center gap-1 text-secondary fw-medium small text-decoration-none p-0 outline-none shadow-none"
           onClick={() => setIsLoginOpen(!isLoginOpen)}
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-user">
@@ -56,7 +98,10 @@ const Navbar = () => {
             <path d="m6 9 6 6 6-6" />
           </svg>
         </button>
-        <button className="bg-[#2563eb] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-blue-700 transition-all shadow-sm">
+        <button
+          className="btn text-white px-4 py-2 fw-semibold small shadow-sm"
+          style={{ backgroundColor: '#2563eb' }}
+        >
           Sign Up
         </button>
       </div>
