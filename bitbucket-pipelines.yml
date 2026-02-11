@@ -9,7 +9,7 @@ pipelines:
           - git config --global user.name "PrepHire Sync Bot"
 
           # connect github using token
-          - git remote add github https://x-token-auth:$GITHUB_TOKEN@github.com/basavaadarsh/prephire-platform.git
+          - git remote add github https://x-token-auth:$GITHUB_TOKEN@github.com/YOUR_GITHUB_USERNAME/prephire-platform.git
 
           # push all branches and tags
           - git push github --all
