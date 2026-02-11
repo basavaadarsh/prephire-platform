@@ -6,7 +6,7 @@ PrepHire is a modern Single Page Application (SPA) designed to help individuals 
 
 PrepHire is dedicated to bridging the gap between education and employment. We empower candidates by providing them with the tools, guidance, and resources necessary to excel in the competitive job market. Our mission is to facilitate a seamless transition from preparation to performance, ensuring every individual has the opportunity to get hired by top-tier companies.
 
-## 📖 About This Project
+## 📖 About This Project 
 
 This project is a high-performance frontend application built on a modern stack. It features a fully integrated client-side routing system and a responsive UI built with Bootstrap. The architecture is designed to be modular and scalable, allowing for rapid development of new features while maintaining a consistent professional aesthetic.
 
