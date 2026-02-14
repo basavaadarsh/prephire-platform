@@ -8,7 +8,7 @@ import {
   servicesData,
   howItWorksData,
   ctaData
-} from "../data/servicesData";
+} from "../data/ServicesData";
 
 const Services = () => {
   const isOdd = servicesData.length % 2 !== 0;
@@ -51,7 +51,7 @@ const Services = () => {
                 whileHover={{ y: -6, scale: 1.02 }}
               >
                 <ServicesDataCard
-                  icon={service.icon} 
+                  icon={service.icon}
                   title={service.title}
                   subtitle={service.subtitle}
                   features={service.features}
