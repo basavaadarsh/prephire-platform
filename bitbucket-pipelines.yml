@@ -15,8 +15,8 @@ pipelines:
             # add github remote
             - git remote add github https://x-token-auth:$GITHUB_TOKEN@github.com/basavaadarsh/prephire-platform.git
 
-            # push all branches
-            - git push github --all
+            # Mirror Bitbucket repository to GitHub.
+            # GitHub acts as deployment mirror for Vercel.
+            # Never push or edit code directly in GitHub.
+            - git push github --mirror
 
-            # push tags
-            - git push github --tags
