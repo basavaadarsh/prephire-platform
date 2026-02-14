@@ -16,7 +16,7 @@ pipelines:
             - git remote add github https://x-token-auth:$GITHUB_TOKEN@github.com/basavaadarsh/prephire-platform.git
 
             # push all branches
-            - git push github --force --all
+            - git push github --all
 
             # push tags
-            - git push github --force --tags
+            - git push github --tags
