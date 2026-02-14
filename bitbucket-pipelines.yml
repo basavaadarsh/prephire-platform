@@ -6,8 +6,8 @@ pipelines:
       - step:
           name: Sync Bitbucket to GitHub
           script:
-            - git config --global user.email "sync@prephire.com"
-            - git config --global user.name "PrepHire Sync Bot"
+            - git config --global user.email "basavaadarsh4@gmail.com"
+            - git config --global user.name "basavaadarsh"
 
             # ensure remote does not already exist
             - git remote remove github || true
