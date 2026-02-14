@@ -1,0 +1,77 @@
+/* ---------- COLORS ---------- */
+.bg-dark-light {
+    background-color: #f1f6fe;
+    background: linear-gradient(135deg,
+            #eef7ff 0%,
+            #f9fbff 60%,
+            #fffefe 100%);
+}
+
+.color-light {
+    color: #9f8b87;
+}
+
+.text-blue {
+    color: #2563eb;
+}
+
+.bg-blue {
+    background-color: #2562eb;
+}
+
+/* ---------- HERO ---------- */
+.hero-section {
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+/* ---------- ICONS ---------- */
+.icon-dec {
+    color: #2563eb;
+    background-color: #e8effc;
+    border-radius: 0.5rem;
+    padding: 0.3rem;
+}
+
+.mark-icon {
+    color: #34ca6b;
+}
+
+/* ---------- STEPS ---------- */
+.steps-section {
+    padding: 4rem 1rem;
+}
+
+.circle-step {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid #2563eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: #2563eb;
+    margin: 0 auto;
+}
+
+.step-card {
+    padding: 1rem;
+}
+
+/* ---------- CTA ---------- */
+.cta-section {
+    padding: 4rem 1rem;
+    text-align: center;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .cta-section h2 {
+        font-size: 1.6rem;
+    }
+}
