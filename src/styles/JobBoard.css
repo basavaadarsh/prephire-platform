@@ -1,0 +1,65 @@
+
+.bg-dark-light {
+    background-color: #f1f6fe;
+    background: linear-gradient(135deg,
+            #eef7ff 0%,
+            #f9fbff 60%,
+            #fffefe 100%);
+}
+
+.jobboard-wrapper {
+    background: #f8f9fa;
+    min-height: 100vh;
+}
+
+/* HERO */
+.jobboard-hero {
+    background: white;
+    border-bottom: 1px solid #eaeaea;
+}
+
+/* Saved Jobs */
+.saved-jobs {
+    background: white;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.saved-jobs:hover {
+    background: #f1f1f1;
+}
+
+/* Responsive Improvements */
+@media (max-width: 768px) {
+    .jobboard-hero {
+        padding: 30px 20px;
+    }
+
+    .jobboard-hero h1 {
+        font-size: 1.8rem;
+    }
+}
+.color-light {
+    color: #9f8b87;
+}
+
+.save-icon:hover{
+color: red;    
+}
+.save-icon:active {
+    color: red;
+}
+
+#saved:hover{
+background-color:#22c55e;
+color: white;
+}
+.data-con{
+    color:#2575ef ;
+    background-color: #e9effd;
+}
+
+#applynow{
+    background-color: #2563eb;
+    color: white;
+}
