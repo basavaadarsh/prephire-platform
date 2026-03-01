@@ -1,0 +1,21 @@
+.bg-dark-light {
+    background-color: #f1f6fe;
+    background: linear-gradient(135deg,
+            #eef7ff 0%,
+            #f9fbff 60%,
+            #fffefe 100%);
+}
+
+.icon-dec {
+    color: #2563eb;
+    background-color: #e8effc;
+    border-radius: 0.5rem;
+    padding: 0.3rem;
+}
+
+.color-light {
+    color: #9f8b87;
+}
+.bd-light{
+    background-color: 9f8b87;
+}
