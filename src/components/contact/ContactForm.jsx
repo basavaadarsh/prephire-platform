@@ -22,7 +22,7 @@ const ContactForm = ({ fields, initialState, strings }) => {
     <section>
       <h2 className="contact-section__title">{strings.sectionTitle}</h2>
       <div className="card contact-card border shadow-sm">
-        <div className="card-body p-4 p-md-5">
+        <div className="card-body p-4">
           <h3 className="contact-form-card__title mb-1">{strings.cardTitle}</h3>
           <p className="contact-form-card__subtitle mb-4">{strings.cardSubtitle}</p>
           <form onSubmit={handleSubmit} noValidate>

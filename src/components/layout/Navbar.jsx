@@ -20,12 +20,12 @@ const Navbar = () => {
       <nav className="navbar navbar-expand-lg bg-white border-bottom py-2 py-md-3 px-3 px-md-5 sticky-top z-3 justify-content-between">
         {/* Logo Section */}
         <div className="d-flex align-items-center gap-2 gap-md-3">
-          <div style={{ backgroundColor: '#2563eb', width: '36px', height: '36px' }} className="rounded-2 rounded-md-3 d-flex align-items-center justify-content-center">
-            <span className="text-white fw-bold" style={{ fontSize: '16px' }}>P</span>
+          <div style={{ backgroundColor: '#2563eb', width: '38px', height: '38px' }} className="rounded-2 rounded-md-3 d-flex align-items-center justify-content-center">
+            <span className="text-white fw-bold" style={{ fontSize: '17px' }}>P</span>
           </div>
           <div>
-            <h1 className="fw-bold text-dark m-0 lh-1" style={{ fontSize: '17px' }}>PrepHire</h1>
-            <p className="m-0 text-secondary fw-medium d-none d-md-block" style={{ fontSize: '11px' }}>Prepare. Perform. Get Hired.</p>
+            <h1 className="fw-bold text-dark m-0 lh-1" style={{ fontSize: '18px' }}>PrepHire</h1>
+            <p className="m-0 text-secondary fw-medium d-none d-md-block" style={{ fontSize: '11.5px' }}>Prepare. Perform. Get Hired.</p>
           </div>
         </div>
 
