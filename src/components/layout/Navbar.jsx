@@ -9,6 +9,8 @@ const Navbar = () => {
     { name: 'About', path: '/about', icon: <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4" /><path d="M12 8h.01" /></svg> },
     { name: 'Services', path: '/services', icon: <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m16 6 4 14" /><path d="M12 6v14" /><path d="M8 8v12" /><path d="M4 4v16" /></svg> },
     { name: 'Courses', path: '/courses', icon: <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-0.5-5" /><path d="M6.5 2H20v20H6.5a2.5 2.5 0 0 1-0.5-5" /></svg> },
+    { name: 'Job Board', path: '/job-board', icon: <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg> },
+    { name: 'Careers', path: '/careers', icon: <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" /></svg> },
     { name: 'Contact', path: '/contact', icon: <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg> }
   ];
 
@@ -18,12 +20,12 @@ const Navbar = () => {
       <nav className="navbar navbar-expand-lg bg-white border-bottom py-2 py-md-3 px-3 px-md-5 sticky-top z-3 justify-content-between">
         {/* Logo Section */}
         <div className="d-flex align-items-center gap-2 gap-md-3">
-          <div style={{ backgroundColor: '#2563eb', width: '32px', height: '32px' }} className="rounded-2 rounded-md-3 d-flex align-items-center justify-content-center">
-            <span className="text-white fs-6 fs-md-5 fw-bold">P</span>
+          <div style={{ backgroundColor: '#2563eb', width: '38px', height: '38px' }} className="rounded-2 rounded-md-3 d-flex align-items-center justify-content-center">
+            <span className="text-white fw-bold" style={{ fontSize: '17px' }}>P</span>
           </div>
           <div>
-            <h1 className="fs-6 fs-md-5 fw-bold text-dark m-0 lh-1">PrepHire</h1>
-            <p className="m-0 text-secondary fw-medium d-none d-md-block" style={{ fontSize: '10px' }}>Prepare. Perform. Get Hired.</p>
+            <h1 className="fw-bold text-dark m-0 lh-1" style={{ fontSize: '18px' }}>PrepHire</h1>
+            <p className="m-0 text-secondary fw-medium d-none d-md-block" style={{ fontSize: '11.5px' }}>Prepare. Perform. Get Hired.</p>
           </div>
         </div>
 
@@ -34,31 +36,14 @@ const Navbar = () => {
               key={link.path}
               to={link.path}
               className={({ isActive }) =>
-                `text-decoration-none small fw-medium ${isActive ? 'text-primary fw-bold' : 'text-secondary hover-dark'}`
+                `text-decoration-none fw-medium ${isActive ? 'text-primary fw-bold' : 'text-secondary hover-dark'}`
               }
-              style={({ isActive }) => ({ color: isActive ? '#2563eb' : '' })}
+              style={({ isActive }) => ({ color: isActive ? '#2563eb' : '', fontSize: '14px' })}
             >
               {link.name}
             </NavLink>
           ))}
-          <NavLink
-            to="/job-board"
-            className={({ isActive }) =>
-              `text-decoration-none small fw-medium ${isActive ? 'text-primary fw-bold' : 'text-secondary hover-dark'}`
-            }
-            style={({ isActive }) => ({ color: isActive ? '#2563eb' : '' })}
-          >
-            Job Board
-          </NavLink>
-          <NavLink
-            to="/careers"
-            className={({ isActive }) =>
-              `text-decoration-none small fw-medium ${isActive ? 'text-primary fw-bold' : 'text-secondary hover-dark'}`
-            }
-            style={({ isActive }) => ({ color: isActive ? '#2563eb' : '' })}
-          >
-            Careers
-          </NavLink>
+
         </div>
 
         {/* Auth Buttons */}
@@ -76,6 +61,9 @@ const Navbar = () => {
               <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
             </svg>
             Login
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#9ca3af' }}>
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
           </button>
           <button
             className="btn d-flex align-items-center gap-2 text-white border-0 px-3 px-md-4 py-1.5 py-md-2 fw-semibold shadow-sm rounded-pill transition-all"
