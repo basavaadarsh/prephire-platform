@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import JobCard from '../components/JobCard';
 import JobSearch from '../components/JobSearch';
 import JobFilters from '../components/JobFilters';
@@ -13,7 +13,39 @@ const JobBoard = () => {
   // Single filters object — adding a new filter = one line in jobFilterConfig.js only.
   const [filters, setFilters] = useState(DEFAULT_FILTERS);
   const [currentPage, setCurrentPage] = useState(1);
-  const [savedCount] = useState(0);
+  const [savedJobs, setSavedJobs] = useState([]);
+  const [showSavedJobs, setShowSavedJobs] = useState(false);
+
+  // Load saved jobs from localStorage on mount
+  useEffect(() => {
+    const stored = localStorage.getItem('savedJobs');
+    if (stored) setSavedJobs(JSON.parse(stored));
+  }, []);
+
+  const handleSaveJob = useCallback((job) => {
+    setSavedJobs((prev) => {
+      const updated = [...prev, job];
+      localStorage.setItem('savedJobs', JSON.stringify(updated));
+      return updated;
+    });
+  }, []);
+
+  const handleUnsaveJob = useCallback((jobId) => {
+    setSavedJobs((prev) => {
+      const updated = prev.filter((j) => j.id !== jobId);
+      localStorage.setItem('savedJobs', JSON.stringify(updated));
+      return updated;
+    });
+  }, []);
+
+  const toggleSaveJob = useCallback((job) => {
+    setSavedJobs((prev) => {
+      const exists = prev.some((j) => j.id === job.id);
+      const updated = exists ? prev.filter((j) => j.id !== job.id) : [...prev, job];
+      localStorage.setItem('savedJobs', JSON.stringify(updated));
+      return updated;
+    });
+  }, []);
 
   const filteredJobs = useMemo(() => {
     const query = searchQuery.toLowerCase();
@@ -88,53 +120,69 @@ const JobBoard = () => {
           {/* Results meta */}
           <div className="d-flex justify-content-between align-items-center mb-3">
             <p style={{ fontSize: '14px', color: '#4B5563', fontWeight: 500, marginBottom: 0 }}>
-              {filteredJobs.length} job{filteredJobs.length !== 1 ? 's' : ''} found
+              {showSavedJobs ? savedJobs.length : filteredJobs.length} job{(showSavedJobs ? savedJobs.length : filteredJobs.length) !== 1 ? 's' : ''} found
             </p>
             <button
               className="d-flex align-items-center gap-2"
+              onClick={() => setShowSavedJobs((v) => !v)}
               onMouseEnter={(e) => {
                 e.currentTarget.style.background = '#22C55E';
                 e.currentTarget.style.borderColor = '#22C55E';
                 e.currentTarget.style.color = '#ffffff';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'white';
-                e.currentTarget.style.borderColor = '#e5e7eb';
-                e.currentTarget.style.color = '#374151';
+                e.currentTarget.style.background = showSavedJobs ? '#22C55E' : 'white';
+                e.currentTarget.style.borderColor = showSavedJobs ? '#22C55E' : '#e5e7eb';
+                e.currentTarget.style.color = showSavedJobs ? '#ffffff' : '#374151';
               }}
-              style={{ fontSize: '14px', color: '#374151', fontWeight: 500, background: 'white', border: '1px solid #E6EAF0', borderRadius: '10px', padding: '8px 16px', cursor: 'pointer', transition: 'background 0.2s ease, color 0.2s ease, border-color 0.2s ease' }}
+              style={{ fontSize: '14px', fontWeight: 500, borderRadius: '10px', padding: '8px 16px', cursor: 'pointer', transition: 'background 0.2s ease, color 0.2s ease, border-color 0.2s ease', background: showSavedJobs ? '#22C55E' : 'white', border: showSavedJobs ? '1px solid #22C55E' : '1px solid #E6EAF0', color: showSavedJobs ? '#ffffff' : '#374151' }}
             >
               <svg width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
               </svg>
-              Saved Jobs ({savedCount})
+              Saved Jobs ({savedJobs.length})
             </button>
           </div>
 
           {/* Job listings */}
-          {paginatedJobs.length > 0 ? (
-            paginatedJobs.map((job) => (
-              <JobCard key={job.id} job={job} />
-            ))
-          ) : (
-            <div className="text-center py-5">
-              <p style={{ fontSize: '16px', color: '#6b7280' }}>No jobs found matching your criteria.</p>
-              <button
-                className="btn btn-outline-primary mt-2"
-                style={{ fontSize: '14px' }}
-                onClick={handleClearFilters}
-              >
-                Clear Filters
-              </button>
-            </div>
-          )}
+          {(() => {
+            const jobsToDisplay = showSavedJobs ? savedJobs : paginatedJobs;
+            if (jobsToDisplay.length === 0) {
+              return (
+                <div className="text-center py-5">
+                  <p style={{ fontSize: '16px', color: '#6b7280' }}>
+                    {showSavedJobs ? 'No saved jobs yet.' : 'No jobs found matching your criteria.'}
+                  </p>
+                  {!showSavedJobs && (
+                    <button
+                      className="btn btn-outline-primary mt-2"
+                      style={{ fontSize: '14px' }}
+                      onClick={handleClearFilters}
+                    >
+                      Clear Filters
+                    </button>
+                  )}
+                </div>
+              );
+            }
+            return jobsToDisplay.map((job) => (
+              <JobCard
+                key={job.id}
+                job={job}
+                isSaved={savedJobs.some((j) => j.id === job.id)}
+                onToggleSave={toggleSaveJob}
+              />
+            ));
+          })()}
 
-          {/* Pagination */}
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={setCurrentPage}
-          />
+          {/* Pagination — only shown on full job list view */}
+          {!showSavedJobs && (
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+            />
+          )}
         </div>
       </section>
     </div>
