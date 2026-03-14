@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const navigate = useNavigate();
 
   const navLinks = [
     { name: 'Home', path: '/', icon: <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg> },
@@ -49,13 +50,13 @@ const Navbar = () => {
         {/* Auth Buttons */}
         <div className="d-flex align-items-center gap-2 gap-md-3">
           <button
-            className="btn d-flex align-items-center gap-2 bg-white border-0 px-3 px-md-4 py-1.5 py-md-2 fw-semibold text-dark shadow-sm rounded-pill transition-all hover-light"
+            className="btn nav-auth-login d-flex align-items-center gap-2 bg-white border-0 px-3 px-md-4 py-1.5 py-md-2 fw-semibold text-dark shadow-sm rounded-pill transition-all"
             style={{
               fontSize: '13px',
               color: '#374151',
               boxShadow: '0 2px 4px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.1)'
             }}
-            onClick={() => setIsLoginOpen(!isLoginOpen)}
+            onClick={() => navigate('/login')}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#9ca3af' }}>
               <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
@@ -66,12 +67,13 @@ const Navbar = () => {
             </svg>
           </button>
           <button
-            className="btn d-flex align-items-center gap-2 text-white border-0 px-3 px-md-4 py-1.5 py-md-2 fw-semibold shadow-sm rounded-pill transition-all"
+            className="btn nav-auth-signup d-flex align-items-center gap-2 text-white border-0 px-3 px-md-4 py-1.5 py-md-2 fw-semibold shadow-sm rounded-pill transition-all"
             style={{
               background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
               fontSize: '13px',
               boxShadow: '0 4px 12px rgba(37, 99, 235, 0.3)'
             }}
+            onClick={() => navigate('/signup')}
           >
             Sign Up
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

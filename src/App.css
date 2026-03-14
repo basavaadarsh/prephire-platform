@@ -8,3 +8,28 @@
 .main {
   flex: 1;
 }
+
+/* Navbar Auth Button Animations */
+.nav-auth-login:hover {
+  background-color: #f8fafc !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+.nav-auth-login:active {
+  transform: translateY(0);
+}
+
+.nav-auth-signup:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4) !important;
+  filter: brightness(1.05);
+}
+
+.nav-auth-signup:active {
+  transform: translateY(0);
+}
+
+.nav-auth-login, .nav-auth-signup {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
