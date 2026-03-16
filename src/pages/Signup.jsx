@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { HiOutlineMail } from 'react-icons/hi';
 import { FiLock, FiEye, FiEyeOff, FiUser, FiPhone } from 'react-icons/fi';
 
@@ -19,7 +20,7 @@ const getPasswordStrength = (pwd) => {
   return 'strong';
 };
 
-const Signup = ({ onSwitchToLogin }) => {
+const Signup = () => {
   const [form, setForm] = useState({
     fullName: '',
     email: '',
@@ -264,7 +265,7 @@ const Signup = ({ onSwitchToLogin }) => {
 
       <div className="auth-switch">
         Already have an account?{' '}
-        <a role="button" onClick={onSwitchToLogin}>Sign In</a>
+        <Link to="/login">Sign In</Link>
       </div>
     </div>
   );

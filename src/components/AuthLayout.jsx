@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useLocation } from 'react-router-dom';
 import Login from '../pages/Login';
 import Signup from '../pages/Signup';
 import '../styles/Auth.css';
@@ -33,7 +34,8 @@ const QuoteOverlay = ({ quote }) => (
 );
 
 const AuthLayout = () => {
-  const [isLogin, setIsLogin] = useState(true);
+  const location = useLocation();
+  const isLogin = location.pathname === '/login';
 
   return (
     <div className="auth-wrapper">
@@ -42,7 +44,7 @@ const AuthLayout = () => {
         {/* Login panel: form on left, image on right */}
         <div className="auth-panel">
           <div className="col-md-6 auth-form-side">
-            <Login onSwitchToSignup={() => setIsLogin(false)} />
+            <Login />
           </div>
           <div className="col-md-6 auth-image-side">
             <img src={loginBg} alt="Developer workspace" />
@@ -57,7 +59,7 @@ const AuthLayout = () => {
             <QuoteOverlay quote={SIGNUP_QUOTE} />
           </div>
           <div className="col-md-6 auth-form-side">
-            <Signup onSwitchToLogin={() => setIsLogin(true)} />
+            <Signup />
           </div>
         </div>
 

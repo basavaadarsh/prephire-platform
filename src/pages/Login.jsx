@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { HiOutlineMail } from 'react-icons/hi';
 import { FiLock, FiEye, FiEyeOff } from 'react-icons/fi';
 
 const GOOGLE_LOGO = 'https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg';
 const FACEBOOK_LOGO = 'https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png';
 
-const Login = ({ onSwitchToSignup }) => {
+const Login = () => {
   const [form, setForm] = useState({ email: '', password: '', rememberMe: false });
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
@@ -144,7 +145,7 @@ const Login = ({ onSwitchToSignup }) => {
 
       <div className="auth-switch">
         Don't have an account?{' '}
-        <a role="button" onClick={onSwitchToSignup}>Sign Up</a>
+        <Link to="/signup">Sign Up</Link>
       </div>
     </div>
   );
