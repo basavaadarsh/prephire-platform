@@ -1,22 +1,20 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { HiOutlineMail } from 'react-icons/hi';
-import { FiLock, FiEye, FiEyeOff } from 'react-icons/fi';
-
-const GOOGLE_LOGO = 'https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg';
-const FACEBOOK_LOGO = 'https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png';
+import { FiLock } from 'react-icons/fi';
+import FormInput from '../components/FormInput';
+import SocialLoginGroup from '../components/SocialLoginGroup';
 
 const Login = () => {
   const [form, setForm] = useState({ email: '', password: '', rememberMe: false });
-  const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
   // Update a single form field and clear its error on change
   const handleChange = (field, value) => {
-    setForm(prev => ({ ...prev, [field]: value }));
+    setForm((prev) => ({ ...prev, [field]: value }));
     if (errors[field]) {
-      setErrors(prev => ({ ...prev, [field]: '' }));
+      setErrors((prev) => ({ ...prev, [field]: '' }));
     }
   };
 
@@ -59,57 +57,30 @@ const Login = () => {
     }, 1500);
   };
 
-  const handleGoogleLogin = () => {
-    // TODO: integrate Google OAuth
-    console.log('Google login clicked');
-  };
-
-  const handleFacebookLogin = () => {
-    // TODO: integrate Facebook OAuth
-    console.log('Facebook login clicked');
-  };
-
   return (
     <div className="auth-form-box">
       <h2>Log In</h2>
 
       <form onSubmit={handleLogin} noValidate>
+        <FormInput
+          icon={<HiOutlineMail />}
+          type="email"
+          placeholder="Your email"
+          value={form.email}
+          onChange={(val) => handleChange('email', val)}
+          error={errors.email}
+          autoComplete="email"
+        />
 
-        {/* Email field */}
-        <div className="auth-input-group">
-          <HiOutlineMail className="input-icon" />
-          <input
-            type="email"
-            placeholder="Your email"
-            value={form.email}
-            onChange={(e) => handleChange('email', e.target.value)}
-            className={errors.email ? 'is-invalid' : ''}
-            autoComplete="email"
-          />
-        </div>
-        {errors.email && <p className="auth-error-text">{errors.email}</p>}
-
-        {/* Password field */}
-        <div className="auth-input-group">
-          <FiLock className="input-icon" />
-          <input
-            type={showPassword ? 'text' : 'password'}
-            placeholder="Password"
-            value={form.password}
-            onChange={(e) => handleChange('password', e.target.value)}
-            className={errors.password ? 'is-invalid' : ''}
-            autoComplete="current-password"
-          />
-          <button
-            type="button"
-            className="toggle-password"
-            onClick={() => setShowPassword(prev => !prev)}
-            aria-label={showPassword ? 'Hide password' : 'Show password'}
-          >
-            {showPassword ? <FiEyeOff /> : <FiEye />}
-          </button>
-        </div>
-        {errors.password && <p className="auth-error-text">{errors.password}</p>}
+        <FormInput
+          icon={<FiLock />}
+          type="password"
+          placeholder="Password"
+          value={form.password}
+          onChange={(val) => handleChange('password', val)}
+          error={errors.password}
+          autoComplete="current-password"
+        />
 
         {/* Remember me & forgot password */}
         <div className="auth-options">
@@ -127,25 +98,12 @@ const Login = () => {
         <button type="submit" className="auth-submit-btn" disabled={loading}>
           {loading ? <span className="auth-spinner" /> : 'Log In'}
         </button>
-
       </form>
 
-      <div className="auth-divider"><span>or</span></div>
-
-      <div className="auth-social-btns">
-        <button type="button" className="auth-social-btn" onClick={handleGoogleLogin}>
-          <img src={GOOGLE_LOGO} alt="Google" />
-          Google
-        </button>
-        <button type="button" className="auth-social-btn" onClick={handleFacebookLogin}>
-          <img src={FACEBOOK_LOGO} alt="Facebook" />
-          Facebook
-        </button>
-      </div>
+      <SocialLoginGroup />
 
       <div className="auth-switch">
-        Don't have an account?{' '}
-        <Link to="/signup">Sign Up</Link>
+        Don't have an account? <Link to="/signup">Sign Up</Link>
       </div>
     </div>
   );

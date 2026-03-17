@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Login from '../pages/Login';
 import Signup from '../pages/Signup';
 import '../styles/Auth.css';
@@ -35,6 +35,7 @@ const QuoteOverlay = ({ quote }) => (
 
 const AuthLayout = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const isLogin = location.pathname === '/login';
 
   return (
