@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import "../styles/Services.css";
 import ServicesDataCard from "../components/ServicesDataCard";
@@ -50,13 +51,28 @@ const Services = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -6, scale: 1.02 }}
               >
-                <ServicesDataCard
-                  icon={service.icon}
-                  title={service.title}
-                  subtitle={service.subtitle}
-                  features={service.features}
-                  price={service.price}
-                />
+                <Link
+                  to={
+                    service.title === "Mock Interviews"
+                      ? "/services/mock-interviews"
+                      : service.title === "Resume Review"
+                      ? "/services/resume-review"
+                      : service.title === "Interview Guidance"
+                      ? "/services/interview-guidance"
+                      : service.title === "Placement Support"
+                      ? "/services/placement-support"
+                      : "/services/corporate-training"
+                  }
+                  className="text-decoration-none"
+                >
+                  <ServicesDataCard
+                    icon={service.icon}
+                    title={service.title}
+                    subtitle={service.subtitle}
+                    features={service.features}
+                    price={service.price}
+                  />
+                </Link>
               </motion.div>
             );
           })}

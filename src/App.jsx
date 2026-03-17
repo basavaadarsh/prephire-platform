@@ -5,6 +5,11 @@ import Footer from './components/layout/Footer'
 import Home from './pages/Home'
 import About from './pages/About'
 import Services from './pages/Services'
+import MockInterviews from './pages/services/MockInterviews'
+import ResumeReview from './pages/services/ResumeReview'
+import InterviewGuidance from './pages/services/InterviewGuidance'
+import PlacementSupport from './pages/services/PlacementSupport'
+import CorporateTraining from './pages/services/CorporateTraining'
 import Courses from './pages/Courses'
 import JobBoard from './pages/JobBoard'
 import Careers from './pages/Careers'
@@ -22,6 +27,11 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/services/mock-interviews" element={<MockInterviews />} />
+            <Route path="/services/resume-review" element={<ResumeReview />} />
+            <Route path="/services/interview-guidance" element={<InterviewGuidance />} />
+            <Route path="/services/placement-support" element={<PlacementSupport />} />
+            <Route path="/services/corporate-training" element={<CorporateTraining />} />
             <Route path="/courses" element={<Courses />} />
             <Route path="/job-board" element={<JobBoard />} />
             <Route path="/careers" element={<Careers />} />
