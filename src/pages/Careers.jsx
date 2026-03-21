@@ -76,6 +76,7 @@ const Careers = () => {
                 {openPositions.map((job, index) => (
                     <CareerCard
                         key={job.id}
+                        id={job.id}
                         title={job.title}
                         description={job.description}
                         type={job.type}
