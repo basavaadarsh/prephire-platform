@@ -1,38 +1,41 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import "../styles/Services.css";
 import ServicesDataCard from "../components/ServicesDataCard";
 
-// ✅ IMPORT DATA
-import {
-  servicesData,
-  howItWorksData,
-  ctaData
-} from "../data/ServicesData";
+import { servicesData, howItWorksData, ctaData } from "../data/ServicesData";
 
 const Services = () => {
+  const navigate = useNavigate();
   const isOdd = servicesData.length % 2 !== 0;
 
-  return (
-    <div>
+  const handleNavigate = (id) => {
+    navigate(`/services/${id}`);
+  };
 
-      {/* ================= HEADER ================= */}
-      <motion.div
-        className="container-fluid bg-dark-light text-center py-5"
-        initial={{ opacity: 0, y: -30 }}
+  return (
+    <div className="service-theme-blue">
+      {/* ================= HERO ================= */}
+      <motion.section
+        className="service-hero-wrap text-center"
+        initial={{ opacity: 0, y: -40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
       >
-        <h1 className="display-5 fw-semibold">Our Services</h1>
-        <p className="fs-5 color-light">
-          Comprehensive interview preparation and career development services
-        </p>
-      </motion.div>
+        <div className="container py-5">
+          <h1 className="service-hero-title gradient-text">Our Services</h1>
 
-      {/* ================= SERVICES CARDS ================= */}
-      <div className="container mt-5">
+          <p className="service-hero-subtitle mx-auto mt-3">
+            Explore premium career services designed to help you prepare,
+            perform, and succeed in interviews.
+          </p>
+        </div>
+      </motion.section>
+
+      {/* ================= SERVICES ================= */}
+      <div className="container py-5">
         <div className="row g-4 justify-content-center">
-
           {servicesData.map((service, index) => {
             const isLast = index === servicesData.length - 1;
 
@@ -40,46 +43,42 @@ const Services = () => {
               <motion.div
                 key={service.id}
                 className={
-                  isOdd && isLast
-                    ? "col-12"
-                    : "col-lg-6 col-md-6 col-sm-12"
+                  isOdd && isLast ? "col-12" : "col-lg-6 col-md-6 col-sm-12"
                 }
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -6, scale: 1.02 }}
               >
-                <ServicesDataCard
-                  icon={service.icon}
-                  title={service.title}
-                  subtitle={service.subtitle}
-                  features={service.features}
-                  price={service.price}
-                />
+                <div
+                  className="service-card-wrapper"
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => handleNavigate(service.id)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") handleNavigate(service.id);
+                  }}
+                >
+                  <ServicesDataCard {...service} />
+                </div>
               </motion.div>
             );
           })}
-
         </div>
       </div>
 
       {/* ================= HOW IT WORKS ================= */}
-      <motion.div
-        className="container-fluid bg-light py-5 mt-5 text-center"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <h2 className="fw-semibold mb-2">How It Works</h2>
-        <p className="fs-5 color-light mb-5">
-          Simple 4-step process to get started
-        </p>
-
+      <section className="py-5 text-center">
         <div className="container">
-          <div className="row g-4 justify-content-center">
+          <span className="section-kicker">Process</span>
 
+          <h2 className="section-title mt-2">How It Works</h2>
+
+          <p className="section-subtitle mb-5">
+            Simple step-by-step process to start your preparation journey.
+          </p>
+
+          <div className="row g-4 justify-content-center">
             {howItWorksData.map((step, index) => (
               <motion.div
                 key={step.step}
@@ -88,36 +87,55 @@ const Services = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.15 }}
+                whileHover={{ y: -6 }}
               >
-                <div className="d-flex flex-column align-items-center gap-2">
+                <div className="feature-premium-card text-center">
                   <span className="circle-step">{step.step}</span>
-                  <h5 className="fw-semibold mt-2">{step.title}</h5>
-                  <p className="color-light text-center">
-                    {step.description}
-                  </p>
+                  <h5 className="fw-bold mt-3">{step.title}</h5>
+                  <p className="feature-desc">{step.description}</p>
                 </div>
               </motion.div>
             ))}
-
           </div>
         </div>
-      </motion.div>
+      </section>
 
       {/* ================= CTA ================= */}
-      <motion.div
-        className="container-fluid bg-blue text-white text-center py-5 pt-5"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <h2 className="fw-semibold">{ctaData.title}</h2>
-        <p className="fs-5 mb-3">{ctaData.subtitle}</p>
-        <button className="btn bg-white text-blue fw-semibold px-4">
-          {ctaData.buttonText}
-        </button>
-      </motion.div>
+      <section className="service-cta-wrap">
+        <div className="container">
+          <motion.div
+            className="service-cta-card text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="section-kicker section-kicker-light">
+              Get Started
+            </span>
 
+            <h2 className="cta-title mt-3">{ctaData.title}</h2>
+
+            <p className="cta-subtitle">{ctaData.subtitle}</p>
+
+            <div className="d-flex justify-content-center gap-3 flex-wrap mt-4">
+              <button
+                className="btn btn-light px-4 py-2 fw-semibold"
+                onClick={() => navigate("/services")}
+              >
+                {ctaData.primaryBtn}
+              </button>
+
+              <button
+                className="btn btn-outline-light px-4 py-2 fw-semibold"
+                onClick={() => navigate("/courses")}
+              >
+                {ctaData.secondaryBtn}
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 };

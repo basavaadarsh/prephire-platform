@@ -1,106 +1,393 @@
-// ================= SERVICES CARDS DATA =================
+import {
+  FaVideo,
+  FaFileAlt,
+  FaUserTie,
+  FaBriefcase,
+  FaBuilding,
+  FaClock,
+  FaUsers,
+  FaCheckCircle,
+  FaLightbulb,
+  FaChartLine,
+  FaAward,
+  FaShieldAlt,
+  FaRocket,
+  FaLayerGroup,
+} from "react-icons/fa";
+
+// ================= SERVICES DATA =================
 export const servicesData = [
   {
-    id: 1,
-    icon: "video",
+    id: "mock-interviews",
+    icon: FaVideo,
+    badge: "Most Popular",
     title: "Mock Interviews",
-    subtitle: "Practice with industry experts in a real interview environment",
-    price: "Starting at ₹299",
+    subtitle:
+      "Practice in a realistic interview environment with expert-led feedback and performance insights.",
+    price: "₹299 / session",
+    oldPrice: "₹499",
+    theme: "blue",
+
+    stats: [
+      { label: "Success Boost", value: "92%" },
+      { label: "Avg Session", value: "60 min" },
+      { label: "Expert Mentors", value: "25+" },
+    ],
+
+    highlights: [
+      "Real interview simulation",
+      "Technical + HR rounds",
+      "Actionable expert feedback",
+    ],
+
     features: [
-      "One-on-one sessions with experienced interviewers",
-      "Technical, HR, and behavioral rounds",
-      "Detailed feedback and performance analysis",
-      "Video recording for self-review",
-      "Flexible scheduling"
-    ]
+      {
+        title: "One-on-One Sessions",
+        desc: "Live interview simulations with experienced mentors.",
+        icon: FaUsers,
+      },
+      {
+        title: "Multi-Round Practice",
+        desc: "Technical, HR & behavioral rounds like real interviews.",
+        icon: FaLayerGroup,
+      },
+      {
+        title: "Detailed Feedback",
+        desc: "Structured reports with improvement insights.",
+        icon: FaChartLine,
+      },
+      {
+        title: "Session Recording",
+        desc: "Review performance anytime.",
+        icon: FaShieldAlt,
+      },
+      {
+        title: "Flexible Scheduling",
+        desc: "Book slots at your convenience.",
+        icon: FaClock,
+      },
+      {
+        title: "Confidence Building",
+        desc: "Reduce anxiety with guided practice.",
+        icon: FaRocket,
+      },
+    ],
+
+    details: [
+      "Simulate real interview environments to reduce anxiety.",
+      "Gain confidence with expert-level feedback.",
+      "Improve communication and technical explanations.",
+      "Understand real recruiter expectations.",
+    ],
+
+    deliverables: [
+      "Live interview session",
+      "Feedback report",
+      "Improvement roadmap",
+      "Session recording",
+    ],
   },
+
   {
-    id: 2,
-    icon: "resume",
+    id: "resume-review",
+    icon: FaFileAlt,
+    badge: "ATS Ready",
     title: "Resume Review",
-    subtitle: "Get your resume reviewed and optimized by HR professionals",
+    subtitle:
+      "Optimize your resume for recruiters and ATS systems with expert insights.",
     price: "₹499",
+    oldPrice: "₹799",
+    theme: "indigo",
+
+    stats: [
+      { label: "ATS Score Boost", value: "85%" },
+      { label: "Delivery Time", value: "48 hrs" },
+      { label: "Experts", value: "15+" },
+    ],
+
+    highlights: [
+      "ATS optimization",
+      "Keyword alignment",
+      "Professional formatting",
+    ],
+
     features: [
-      "Professional resume analysis",
-      "ATS-friendly formatting",
-      "Keyword optimization",
-      "Industry-specific suggestions",
-      "Before/after comparison"
-    ]
+      {
+        title: "ATS Optimization",
+        desc: "Improve compatibility with recruiter systems.",
+        icon: FaShieldAlt,
+      },
+      {
+        title: "Keyword Matching",
+        desc: "Align resume with job roles.",
+        icon: FaLightbulb,
+      },
+      {
+        title: "Professional Design",
+        desc: "Clean and structured resume format.",
+        icon: FaAward,
+      },
+      {
+        title: "Expert Feedback",
+        desc: "Insights from hiring professionals.",
+        icon: FaUsers,
+      },
+      {
+        title: "Impact Statements",
+        desc: "Strong measurable achievements.",
+        icon: FaChartLine,
+      },
+      {
+        title: "Customization",
+        desc: "Role-specific resume tuning.",
+        icon: FaRocket,
+      },
+    ],
+
+    details: [
+      "Increase chances of shortlisting.",
+      "Improve resume clarity and readability.",
+      "Match industry hiring standards.",
+      "Create strong first impression.",
+    ],
+
+    deliverables: [
+      "Reviewed resume",
+      "Optimization suggestions",
+      "Improved content",
+      "Final guidance",
+    ],
   },
+
   {
-    id: 3,
-    icon: "guidance",
+    id: "interview-guidance",
+    icon: FaUserTie,
+    badge: "1:1 Mentorship",
     title: "Interview Guidance",
-    subtitle: "Personal mentoring sessions to boost your interview skills",
+    subtitle: "Personal mentoring sessions to boost interview performance.",
     price: "₹799 / session",
+    oldPrice: "₹1199",
+    theme: "violet",
+
+    stats: [
+      { label: "Mentor Support", value: "1:1" },
+      { label: "Session Time", value: "90 min" },
+      { label: "Roles Covered", value: "50+" },
+    ],
+
+    highlights: [
+      "Customized strategy",
+      "Confidence building",
+      "Company-specific tips",
+    ],
+
     features: [
-      "Customized preparation strategy",
-      "Common question practice",
-      "Body language coaching",
-      "Confidence building exercises",
-      "Company-specific tips"
-    ]
+      {
+        title: "Custom Strategy",
+        desc: "Personalized preparation plan.",
+        icon: FaRocket,
+      },
+      {
+        title: "Question Practice",
+        desc: "Practice key interview questions.",
+        icon: FaCheckCircle,
+      },
+      {
+        title: "Behavioral Training",
+        desc: "Improve HR round answers.",
+        icon: FaUsers,
+      },
+      {
+        title: "Technical Prep",
+        desc: "Strengthen core knowledge.",
+        icon: FaChartLine,
+      },
+      {
+        title: "Confidence Coaching",
+        desc: "Improve communication & posture.",
+        icon: FaAward,
+      },
+      {
+        title: "Roadmap",
+        desc: "Structured preparation plan.",
+        icon: FaClock,
+      },
+    ],
+
+    details: [
+      "Get clear preparation roadmap.",
+      "Understand interview patterns.",
+      "Improve communication skills.",
+      "Boost overall confidence.",
+    ],
+
+    deliverables: [
+      "Guidance session",
+      "Preparation roadmap",
+      "Question bank",
+      "Improvement plan",
+    ],
   },
+
   {
-    id: 4,
-    icon: "placement",
+    id: "placement-support",
+    icon: FaBriefcase,
+    badge: "Career Assist",
     title: "Placement Support",
-    subtitle: "End-to-end assistance in landing your dream job",
-    price: "Included in packages",
+    subtitle: "End-to-end job assistance and career support.",
+    price: "Included",
+    theme: "emerald",
+
+    stats: [
+      { label: "Support", value: "Ongoing" },
+      { label: "Matching", value: "Smart" },
+      { label: "Process", value: "Guided" },
+    ],
+
+    highlights: ["Job matching", "Application support", "Offer guidance"],
+
     features: [
-      "Job matching service",
-      "Application assistance",
-      "Interview scheduling help",
-      "Salary negotiation tips",
-      "Post-placement support"
-    ]
+      {
+        title: "Job Matching",
+        desc: "Relevant job opportunities.",
+        icon: FaLightbulb,
+      },
+      {
+        title: "Application Help",
+        desc: "Improve applications.",
+        icon: FaFileAlt,
+      },
+      {
+        title: "Interview Tracking",
+        desc: "Manage interview schedules.",
+        icon: FaClock,
+      },
+      {
+        title: "Offer Guidance",
+        desc: "Negotiation support.",
+        icon: FaAward,
+      },
+      {
+        title: "Career Tracking",
+        desc: "Track your progress.",
+        icon: FaChartLine,
+      },
+      {
+        title: "Mentor Support",
+        desc: "Continuous expert help.",
+        icon: FaUsers,
+      },
+    ],
+
+    details: [
+      "Structured job search support.",
+      "Better application quality.",
+      "Faster hiring process.",
+      "Guided career growth.",
+    ],
+
+    deliverables: [
+      "Job guidance",
+      "Application help",
+      "Interview planning",
+      "Offer advice",
+    ],
   },
+
   {
-    id: 5,
-    icon: "corporate",
+    id: "corporate-training",
+    icon: FaBuilding,
+    badge: "B2B Program",
     title: "Corporate Training",
-    subtitle: "Customized training programs for organizations",
-    price: "Custom pricing",
+    subtitle: "Training programs for institutions and organizations.",
+    price: "Custom Pricing",
+    theme: "slate",
+
+    stats: [
+      { label: "Format", value: "Custom" },
+      { label: "Audience", value: "Teams" },
+      { label: "Mode", value: "Online/Offline" },
+    ],
+
+    highlights: ["Campus programs", "Skill workshops", "Custom curriculum"],
+
     features: [
-      "Campus recruitment training",
-      "Employee skill development",
-      "Leadership interviews",
-      "Bulk mock interview sessions",
-      "Customized curriculum"
-    ]
-  }
+      {
+        title: "Campus Training",
+        desc: "Placement-focused programs.",
+        icon: FaUsers,
+      },
+      {
+        title: "Skill Development",
+        desc: "Improve communication & aptitude.",
+        icon: FaRocket,
+      },
+      {
+        title: "Leadership Training",
+        desc: "Managerial skill building.",
+        icon: FaAward,
+      },
+      {
+        title: "Mock Sessions",
+        desc: "Bulk interview practice.",
+        icon: FaVideo,
+      },
+      {
+        title: "Custom Curriculum",
+        desc: "Tailored learning paths.",
+        icon: FaLightbulb,
+      },
+      {
+        title: "Outcome Tracking",
+        desc: "Measure progress.",
+        icon: FaChartLine,
+      },
+    ],
+
+    details: [
+      "Improve employability at scale.",
+      "Standardize training quality.",
+      "Deliver measurable results.",
+      "Enhance team performance.",
+    ],
+
+    deliverables: [
+      "Training plan",
+      "Workshops",
+      "Progress reports",
+      "Recommendations",
+    ],
+  },
 ];
 
-
-// ================= HOW IT WORKS STEPS DATA =================
+// ================= HOW IT WORKS =================
 export const howItWorksData = [
   {
     step: 1,
-    title: "Sign Up",
-    description: "Create your account and choose a plan"
+    title: "Choose Service",
+    description: "Select a service based on your needs.",
   },
   {
     step: 2,
-    title: "Select Service",
-    description: "Pick the service that fits your needs"
+    title: "Book Session",
+    description: "Schedule your session easily.",
   },
   {
     step: 3,
-    title: "Schedule Session",
-    description: "Book a convenient time slot"
+    title: "Get Guidance",
+    description: "Receive expert help and feedback.",
   },
   {
     step: 4,
-    title: "Start Preparing",
-    description: "Begin your journey to success"
-  }
+    title: "Improve",
+    description: "Track progress and grow.",
+  },
 ];
 
-
-// ================= CTA DATA =================
+// ================= CTA =================
 export const ctaData = {
-  title: "Ready to Ace Your Interviews?",
-  subtitle: "Choose a service and start your preparation today",
-  buttonText: "Get Started Now"
+  title: "Ready to accelerate your career?",
+  subtitle: "Start your preparation with expert guidance today.",
+  primaryBtn: "Book a Session",
+  secondaryBtn: "Explore Courses",
 };

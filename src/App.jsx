@@ -1,17 +1,18 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import './App.css'
-import Navbar from './components/layout/Navbar'
-import Footer from './components/layout/Footer'
-import Home from './pages/Home'
-import About from './pages/About'
-import Services from './pages/Services'
-import Courses from './pages/Courses'
-import JobBoard from './pages/JobBoard'
-import Careers from './pages/Careers'
-import Contact from './pages/Contact'
-import PrivacyPolicy from './pages/PrivacyPolicy'
-import TermsOfService from './pages/TermsOfService'
-import AuthLayout from './components/AuthLayout'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Services from "./pages/Services";
+import Courses from "./pages/Courses";
+import JobBoard from "./pages/JobBoard";
+import Careers from "./pages/Careers";
+import Contact from "./pages/Contact";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
+import AuthLayout from "./components/AuthLayout";
+import ServiceDetail from "./pages/services/ServiceDetail";
 
 function App() {
   return (
@@ -37,7 +38,14 @@ function App() {
                   <Route path="/careers" element={<Careers />} />
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                  <Route path="/terms-of-service" element={<TermsOfService />} />
+                  <Route
+                    path="/terms-of-service"
+                    element={<TermsOfService />}
+                  />
+                  <Route
+                    path="/services/:serviceId"
+                    element={<ServiceDetail />}
+                  />
                 </Routes>
               </main>
               <Footer />
@@ -46,7 +54,7 @@ function App() {
         />
       </Routes>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;
