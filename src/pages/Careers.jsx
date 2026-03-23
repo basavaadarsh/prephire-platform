@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { GoChevronRight } from "react-icons/go";
 import CareerCard from "../components/CareerCard";
@@ -136,6 +137,24 @@ const Careers = () => {
                     </div>
                 </div>
             </div>
+
+            {/* ================= BROWSE ALL JOBS CTA ================= */}
+            <motion.div
+                className="browse-jobs-cta"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+            >
+                <h2>Looking for More Opportunities?</h2>
+                <p>Explore our full job board with positions from top companies</p>
+                <Link to="/job-board" className="btn-browse-jobs">
+                    Browse All Jobs
+                    <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                        <path d="M5 12h14m-7-7 7 7-7 7" />
+                    </svg>
+                </Link>
+            </motion.div>
 
             {/* ================= MENTOR CTA SECTION ================= */}
             <motion.div

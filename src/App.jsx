@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import ScrollToTop from './components/ScrollToTop'
 import './App.css'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
@@ -16,6 +17,7 @@ import AuthLayout from './components/AuthLayout'
 
 const App = () => (
   <Router>
+    <ScrollToTop />
     <Routes>
       {/* Auth routes – no Navbar/Footer */}
       <Route path="/login" element={<AuthLayout />} />

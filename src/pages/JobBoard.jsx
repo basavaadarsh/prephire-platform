@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useCallback, useEffect } from 'react';
-import JobCard from '../components/JobCard';
+import JobCard from '../components/jobs/JobCard';
 import JobSearch from '../components/JobSearch';
 import JobFilters from '../components/JobFilters';
 import Pagination from '../components/Pagination';
