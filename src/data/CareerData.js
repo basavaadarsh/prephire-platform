@@ -12,12 +12,19 @@ export const benefits = [
 /* ================= OPEN POSITIONS DATA ================= */
 export const openPositions = [
     {
-        id: 1,
+        id: "career-1",
         title: "Interview Mentor (Technical)",
+        company: "PrepHire",
         description: "Conduct technical mock interviews and provide detailed feedback to students",
         type: "Full-time",
         location: "Bangalore / Remote",
         experience: "5+ years",
+        responsibilities: [
+            "Conduct 1-on-1 technical mock interviews with students",
+            "Provide structured, actionable feedback after each session",
+            "Design interview questions aligned with industry standards",
+            "Track student progress and adapt coaching approach"
+        ],
         requirements: [
             "5+ years in software development",
             "Interview experience at top companies",
@@ -25,12 +32,19 @@ export const openPositions = [
         ]
     },
     {
-        id: 2,
+        id: "career-2",
         title: "Interview Mentor (HR)",
+        company: "PrepHire",
         description: "Guide students through HR and behavioral interview preparation",
         type: "Part-time",
         location: "Remote",
         experience: "3+ years",
+        responsibilities: [
+            "Conduct behavioral and HR mock interview sessions",
+            "Help students craft compelling personal stories",
+            "Review and improve resumes and cover letters",
+            "Provide salary negotiation coaching"
+        ],
         requirements: [
             "HR experience in recruitment",
             "Strong interpersonal skills",
@@ -38,12 +52,19 @@ export const openPositions = [
         ]
     },
     {
-        id: 3,
+        id: "career-3",
         title: "Content Developer",
+        company: "PrepHire",
         description: "Create engaging course content, mock tests, and study materials",
         type: "Full-time",
         location: "Bangalore",
         experience: "2+ years",
+        responsibilities: [
+            "Develop curriculum for interview prep courses",
+            "Write practice questions and test cases",
+            "Review and update existing course materials",
+            "Collaborate with mentors to identify content gaps"
+        ],
         requirements: [
             "EdTech content experience",
             "Subject matter expertise",
@@ -51,12 +72,19 @@ export const openPositions = [
         ]
     },
     {
-        id: 4,
+        id: "career-4",
         title: "Business Development Executive",
+        company: "PrepHire",
         description: "Expand our corporate training partnerships and student outreach",
         type: "Full-time",
         location: "Bangalore",
         experience: "3+ years",
+        responsibilities: [
+            "Identify and onboard corporate training partners",
+            "Drive student acquisition through outreach campaigns",
+            "Build and maintain client relationships",
+            "Achieve monthly and quarterly revenue targets"
+        ],
         requirements: [
             "B2B sales experience",
             "EdTech or HR industry background",
