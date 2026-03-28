@@ -13,6 +13,10 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import AuthLayout from "./components/AuthLayout";
 import ServiceDetail from "./pages/services/ServiceDetail";
+import MentorsList from "./pages/mentors/MentorsList";
+import MentorProfile from "./pages/mentors/MentorProfile";
+import "./styles/mentors.css";
+import ErrorPage from "./pages/common/ErrorPage";
 
 function App() {
   return (
@@ -46,6 +50,9 @@ function App() {
                     path="/services/:serviceId"
                     element={<ServiceDetail />}
                   />
+                  <Route path="/mentors" element={<MentorsList />} />
+                  <Route path="/mentor/:id" element={<MentorProfile />} />
+                  <Route path="/error" element={<ErrorPage />} />
                 </Routes>
               </main>
               <Footer />
