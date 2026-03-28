@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import ScrollToTop from './components/ScrollToTop'
 import './App.css'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
@@ -7,6 +8,7 @@ import About from './pages/About'
 import Services from './pages/Services'
 import Courses from './pages/Courses'
 import JobBoard from './pages/JobBoard'
+import JobDetails from './pages/JobDetails'
 import Careers from './pages/Careers'
 import Contact from './pages/Contact'
 import PrivacyPolicy from './pages/PrivacyPolicy'
@@ -37,6 +39,7 @@ function App() {
   return (
     <ErrorBoundary>
       <Router>
+        <ScrollToTop />
         <Routes>
         {/* Auth routes – no Navbar/Footer */}
         <Route path="/login" element={<AuthLayout />} />
@@ -79,6 +82,7 @@ function App() {
                   <Route path="/services" element={<Services />} />
                   <Route path="/courses" element={<Courses />} />
                   <Route path="/job-board" element={<JobBoard />} />
+                  <Route path="/job/:id" element={<JobDetails />} />
                   <Route path="/careers" element={<Careers />} />
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/privacy-policy" element={<PrivacyPolicy />} />

@@ -1,7 +1,9 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const JobCard = ({ job, isSaved = false, onToggleSave }) => {
   const [bookmarkHover, setBookmarkHover] = useState(false);
+  const navigate = useNavigate();
 
   const badges = [
     { icon: <><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></>, text: job.location },
@@ -33,7 +35,7 @@ const JobCard = ({ job, isSaved = false, onToggleSave }) => {
         transition: 'transform 0.25s ease, box-shadow 0.25s ease',
       }}
     >
-      {/* â”€â”€ Left: all job info â”€â”€ */}
+      {/* â€"â€" Left: all job info â€"â€" */}
       <div style={{ flex: 1, minWidth: 0 }}>
         {/* Title + Company */}
         <h5 style={{ fontSize: '22px', fontWeight: 600, color: '#111827', marginBottom: '4px' }}>
@@ -43,7 +45,7 @@ const JobCard = ({ job, isSaved = false, onToggleSave }) => {
           {job.company}
         </p>
 
-        {/* Badges â€” pill with border */}
+        {/* Badges â€" pill with border */}
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '14px' }}>
           {badges.map(({ icon, text }) => (
             <span
@@ -95,7 +97,7 @@ const JobCard = ({ job, isSaved = false, onToggleSave }) => {
         </div>
       </div>
 
-      {/* â”€â”€ Right: [bookmark + Apply Now] then Posted date below â”€â”€ */}
+      {/* â€"â€" Right: [bookmark + Apply Now] then Posted date below â€"â€" */}
       <div
         style={{
           display: 'flex',
@@ -106,8 +108,8 @@ const JobCard = ({ job, isSaved = false, onToggleSave }) => {
           flexShrink: 0,
         }}
       >
-        {/* Row: bookmark icon + Apply Now button */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        {/* Row: bookmark + View Details + Apply Now */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
           {/* Bookmark */}
           <button
             onClick={() => onToggleSave && onToggleSave(job)}
@@ -132,6 +134,41 @@ const JobCard = ({ job, isSaved = false, onToggleSave }) => {
           >
             <svg width="15" height="15" fill={isSaved ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+            </svg>
+          </button>
+
+          {/* View Details */}
+          <button
+            onClick={() => navigate(`/job/${job.id}`)}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              backgroundColor: '#ffffff',
+              color: '#2563eb',
+              border: '1px solid #2563eb',
+              borderRadius: '10px',
+              padding: '10px 18px',
+              fontWeight: 500,
+              fontSize: '14px',
+              whiteSpace: 'nowrap',
+              cursor: 'pointer',
+              transition: 'transform 0.15s ease, background-color 0.15s ease, color 0.15s ease',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = '#2563eb';
+              e.currentTarget.style.color = '#ffffff';
+              e.currentTarget.style.transform = 'translateY(-1px)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = '#ffffff';
+              e.currentTarget.style.color = '#2563eb';
+              e.currentTarget.style.transform = 'translateY(0)';
+            }}
+          >
+            View Details
+            <svg width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path d="M5 12h14m-7-7 7 7-7 7" />
             </svg>
           </button>
 
@@ -174,7 +211,7 @@ const JobCard = ({ job, isSaved = false, onToggleSave }) => {
           </a>
         </div>
 
-        {/* Posted date â€” right-aligned below apply button */}
+        {/* Posted date â€" right-aligned below apply button */}
         <span style={{ fontSize: '12px', color: '#9ca3af', whiteSpace: 'nowrap' }}>
           Posted {job.postedDate}
         </span>
