@@ -1,22 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { HiOutlineInbox } from 'react-icons/hi2';
+import { Calendar, MapPin } from 'lucide-react';
 import { dashboardData } from '../../data/dashboardData';
-import ApplicationModal from './ApplicationModal';
 
 const ApplicationsTable = ({ applications }) => {
-  const [selectedApplication, setSelectedApplication] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleOpenModal = (application) => {
-    setSelectedApplication(application);
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setSelectedApplication(null);
-  };
-
   return (
     <div className="applications-card">
       <div className="applications-header">
@@ -41,9 +28,9 @@ const ApplicationsTable = ({ applications }) => {
               <tr>
                 <th>{dashboardData.ui.tableHeaders.role}</th>
                 <th>{dashboardData.ui.tableHeaders.company}</th>
-                <th>{dashboardData.ui.tableHeaders.date}</th>
+                <th>{dashboardData.ui.tableHeaders.location}</th>
                 <th>{dashboardData.ui.tableHeaders.status}</th>
-                <th>{dashboardData.ui.tableHeaders.actions}</th>
+                <th>{dashboardData.ui.tableHeaders.date}</th>
               </tr>
             </thead>
             <tbody>
@@ -51,20 +38,22 @@ const ApplicationsTable = ({ applications }) => {
                 <tr key={application.id}>
                   <td>{application.role}</td>
                   <td>{application.company}</td>
-                  <td>{application.date}</td>
+                  <td>
+                    <span className="table-meta">
+                      <MapPin size={14} />
+                      {application.location}
+                    </span>
+                  </td>
                   <td>
                     <span className={`status-badge ${dashboardData.statusClassMap[application.status]}`}>
                       {application.status}
                     </span>
                   </td>
                   <td>
-                    <button
-                      type="button"
-                      className="table-action"
-                      onClick={() => handleOpenModal(application)}
-                    >
-                      {dashboardData.ui.tableHeaders.actionLabel}
-                    </button>
+                    <span className="table-meta">
+                      <Calendar size={14} />
+                      {application.date}
+                    </span>
                   </td>
                 </tr>
               ))}
@@ -72,12 +61,6 @@ const ApplicationsTable = ({ applications }) => {
           </table>
         </div>
       )}
-
-      <ApplicationModal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        data={selectedApplication}
-      />
     </div>
   );
 };

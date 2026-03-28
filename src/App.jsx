@@ -16,6 +16,16 @@ import DashboardLayout from './layouts/DashboardLayout'
 import DashboardHome from './pages/dashboard/DashboardHome'
 import MyApplications from './pages/dashboard/MyApplications'
 import MyProfile from './pages/dashboard/MyProfile'
+import LearningHub from './pages/dashboard/LearningHub'
+import CoursesDashboard from './pages/dashboard/CoursesDashboard'
+import CertificatesDashboard from './pages/dashboard/CertificatesDashboard'
+import Messages from './pages/dashboard/Messages'
+import Interviews from './pages/dashboard/Interviews'
+import Skills from './pages/dashboard/Skills'
+import Mentors from './pages/dashboard/Mentors'
+import Settings from './pages/dashboard/Settings'
+import Career from './pages/dashboard/Career'
+import CareerGoals from './pages/dashboard/CareerGoals'
 import ErrorBoundary from './components/ErrorBoundary'
 
 const DashboardGuard = ({ children }) => {
@@ -42,8 +52,18 @@ function App() {
           )}
         >
           <Route index element={<DashboardHome />} />
+          <Route path="learning" element={<LearningHub />} />
+          <Route path="courses" element={<CoursesDashboard />} />
+          <Route path="certificates" element={<CertificatesDashboard />} />
           <Route path="applications" element={<MyApplications />} />
+          <Route path="career" element={<Career />} />
+          <Route path="interviews" element={<Interviews />} />
+          <Route path="skills" element={<Skills />} />
+          <Route path="mentors" element={<Mentors />} />
+          <Route path="messages" element={<Messages />} />
+          <Route path="settings" element={<Settings />} />
           <Route path="profile" element={<MyProfile />} />
+          <Route path="goals" element={<CareerGoals />} />
         </Route>
 
         {/* Main app routes */}

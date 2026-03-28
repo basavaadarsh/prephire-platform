@@ -1,47 +1,58 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { useOutletContext } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import {
-  HiOutlineAcademicCap,
-  HiOutlineBriefcase,
-  HiOutlineFire,
-  HiOutlineCalendar,
-  HiOutlineCheckBadge,
-  HiOutlineSparkles,
-} from 'react-icons/hi2';
+  BookMarked,
+  Building2,
+  AlarmClock,
+  Award,
+  Target,
+  TrendingUp,
+  BookOpen,
+  Briefcase,
+  Clock,
+} from 'lucide-react';
 import StatCard from '../../components/dashboard/StatCard';
+import AnalyticsCharts from '../../components/dashboard/charts/AnalyticsCharts';
 import { dashboardData } from '../../data/dashboardData';
 
 const iconMap = {
-  courses: <HiOutlineAcademicCap />,
-  applications: <HiOutlineBriefcase />,
-  streak: <HiOutlineFire />,
-  interviews: <HiOutlineCalendar />,
-  completed: <HiOutlineCheckBadge />,
+  courses: <BookMarked size={22} />,
+  applications: <Building2 size={22} />,
+  interviews: <AlarmClock size={22} />,
+  certificates: <Award size={22} />,
+  skills: <Target size={22} />,
+  profile: <TrendingUp size={22} />,
+};
+
+const quickActionIcons = {
+  book: <BookOpen size={20} />,
+  briefcase: <Briefcase size={20} />,
+  clock: <Clock size={20} />,
+  target: <Target size={20} />,
 };
 
 const DashboardHome = () => {
   const { user } = useOutletContext();
-  const todayLabel = useMemo(
-    () => new Date().toLocaleDateString('en-US', {
-      weekday: 'long',
-      month: 'long',
-      day: 'numeric',
-    }),
-    []
-  );
-
   return (
-    <div className="dashboard-page page-fade">
-      <section className="dashboard-section">
-        <div className="welcome-card">
-          <div>
-            <div className="welcome-title">{dashboardData.ui.welcomeGreeting}, {user?.name || 'User'}</div>
-            <div className="welcome-date">{todayLabel}</div>
-            <p className="welcome-text">{dashboardData.ui.welcomeLine}</p>
-          </div>
-          <div className="welcome-actions">
-            <button type="button" className="btn btn-primary">{dashboardData.ui.primaryAction}</button>
-            <button type="button" className="btn btn-outline-secondary">{dashboardData.ui.secondaryAction}</button>
+    <motion.div
+      className="dashboard-page"
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+    >
+      <section className="hero-banner">
+        <div className="hero-content">
+          <h1>
+            {dashboardData.ui.heroTitlePrefix} {user?.name || 'User'}{dashboardData.ui.heroTitleSuffix}{' '}
+            <span className="hero-emoji" role="img" aria-label="celebrate">
+              🎉
+            </span>
+          </h1>
+          <p>{dashboardData.ui.heroSubtitle}</p>
+          <div className="hero-actions">
+            <button type="button" className="btn btn-primary">{dashboardData.ui.heroPrimary}</button>
+            <button type="button" className="btn btn-outline-light">{dashboardData.ui.heroSecondary}</button>
           </div>
         </div>
       </section>
@@ -52,7 +63,7 @@ const DashboardHome = () => {
         </div>
         <div className="row g-3">
           {dashboardData.statistics.map((stat) => (
-            <div key={stat.id} className="col-12 col-md-6 col-xl-3">
+            <div key={stat.id} className="col-12 col-md-6 col-xl-4">
               <StatCard
                 icon={iconMap[stat.icon]}
                 title={stat.title}
@@ -66,47 +77,46 @@ const DashboardHome = () => {
         </div>
       </section>
 
-      <section className="dashboard-section">
+      <section className="analytics-section">
         <div className="section-header">
-          <h2 className="section-title">{dashboardData.ui.enrolledCoursesTitle}</h2>
+          <div>
+            <h2 className="section-title">{dashboardData.ui.analyticsTitle}</h2>
+            {dashboardData.ui.analyticsSubtitle ? (
+              <p className="section-subtitle">{dashboardData.ui.analyticsSubtitle}</p>
+            ) : null}
+          </div>
         </div>
-        <div className="row g-3">
-          {dashboardData.enrolledCourses.length === 0 ? (
-            <div className="col-12">
-              <div className="empty-state">
-                <HiOutlineSparkles className="empty-icon" />
-                <div className="empty-title">{dashboardData.ui.emptyCoursesTitle}</div>
-                <div className="empty-text">{dashboardData.ui.emptyCoursesText}</div>
+        <AnalyticsCharts />
+      </section>
+
+      <section className="quick-actions">
+        <div className="section-header">
+          <div>
+            <h2 className="section-title">{dashboardData.ui.quickActionsTitle}</h2>
+            <p className="section-subtitle">{dashboardData.ui.quickActionsSubtitle}</p>
+          </div>
+        </div>
+        <div className="quick-actions-grid">
+          {dashboardData.ui.quickActions.map((action) => (
+            <motion.button
+              key={action.title}
+              type="button"
+              className="quick-action-card"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <div className="quick-action-icon">
+                {quickActionIcons[action.icon]}
               </div>
-            </div>
-          ) : (
-            dashboardData.enrolledCourses.map((course) => (
-              <div key={course.id} className="col-12">
-                <div className="course-card">
-                  <div className="course-header">
-                    <div>
-                      <div className="course-title">{course.name}</div>
-                      <div className="course-meta">
-                        {course.completedLessons}/{course.totalLessons} {dashboardData.ui.lessonsCompletedLabel}
-                      </div>
-                    </div>
-                    <div className="course-date">{dashboardData.ui.dueLabel} {course.dueDate}</div>
-                  </div>
-                  <progress
-                    className="course-progress"
-                    value={course.progressPercent}
-                    max="100"
-                  />
-                  <div className="course-progress-label">
-                    {course.progressPercent}% {dashboardData.ui.courseProgressSuffix}
-                  </div>
-                </div>
+              <div>
+                <div className="quick-action-title">{action.title}</div>
+                <div className="quick-action-label">{action.label}</div>
               </div>
-            ))
-          )}
+            </motion.button>
+          ))}
         </div>
       </section>
-    </div>
+    </motion.div>
   );
 };
 

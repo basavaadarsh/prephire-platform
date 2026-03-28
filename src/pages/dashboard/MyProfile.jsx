@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import { motion } from 'framer-motion';
 import { useOutletContext } from 'react-router-dom';
 import ProfileForm from '../../components/dashboard/ProfileForm';
 import { dashboardData } from '../../data/dashboardData';
@@ -22,7 +23,7 @@ const MyProfile = () => {
     if (setUser) setUser(updatedData);
     setSaveNotice(dashboardData.ui.saveSuccess);
     if (showToast) {
-      showToast({ type: 'success', message: dashboardData.ui.toastSuccess });
+      showToast({ type: 'success', message: dashboardData.ui.toasts.profileSaved });
     }
     setIsEditing(false);
     setTimeout(() => setSaveNotice(''), 2500);
@@ -30,12 +31,17 @@ const MyProfile = () => {
 
   const handleError = () => {
     if (showToast) {
-      showToast({ type: 'error', message: dashboardData.ui.toastError });
+      showToast({ type: 'error', message: dashboardData.ui.toasts.profileError });
     }
   };
 
   return (
-    <div className="dashboard-page">
+    <motion.div
+      className="dashboard-page"
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+    >
       <div className="page-header">
         <div>
           <h1 className="page-title">{dashboardData.ui.profileTitle}</h1>
@@ -61,7 +67,7 @@ const MyProfile = () => {
         onError={handleError}
         onCancel={() => setIsEditing(false)}
       />
-    </div>
+    </motion.div>
   );
 };
 
