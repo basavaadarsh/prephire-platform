@@ -4,110 +4,8 @@ import { FiShoppingCart, FiCheck } from "react-icons/fi";
 import { HiOutlineFilter } from "react-icons/hi";
 import { IoChevronDownSharp } from "react-icons/io5";
 import CourseCard from "../components/CourseCard";
+import { coursesData, categories } from "../data/coursesData";
 import "../styles/Courses.css";
-
-/* ===== COURSE DATA ===== */
-const coursesData = [
-    {
-        id: 1,
-        category: "Complete Package",
-        title: "Full Interview Kit",
-        duration: "1 Year",
-        level: "All Levels",
-        features: ["35 Mock Interviews", "Aptitude Course", "Company Exams", "Job Board"],
-        rating: 4.8,
-        students: 5420,
-        price: 1999
-    },
-    {
-        id: 2,
-        category: "Mock Interviews",
-        title: "Quick Mock Interviews",
-        duration: "3 Months",
-        level: "All Levels",
-        features: ["10 Mock Interviews", "Instant Feedback", "Flexible Schedule"],
-        rating: 4.7,
-        students: 3210,
-        price: 499
-    },
-    {
-        id: 3,
-        category: "Aptitude",
-        title: "Aptitude & Reasoning Mastery",
-        duration: "6 Months",
-        level: "Beginner to Advanced",
-        features: ["200+ Practice Questions", "Video Solutions", "Mock Tests"],
-        rating: 4.6,
-        students: 2890,
-        price: 799
-    },
-    {
-        id: 4,
-        category: "Company Specific",
-        title: "TCS NQT Preparation",
-        duration: "3 Months",
-        level: "Intermediate",
-        features: ["Pattern-based Tests", "Previous Papers", "Expert Tips"],
-        rating: 4.9,
-        students: 4120,
-        price: 599
-    },
-    {
-        id: 5,
-        category: "Company Specific",
-        title: "Accenture Exam Prep",
-        duration: "3 Months",
-        level: "Intermediate",
-        features: ["Coding Tests", "Aptitude Prep", "Communication"],
-        rating: 4.7,
-        students: 3450,
-        price: 599
-    },
-    {
-        id: 6,
-        category: "Technical",
-        title: "Technical Interview Mastery",
-        duration: "6 Months",
-        level: "Intermediate to Advanced",
-        features: ["DSA Practice", "System Design", "15 Mock Interviews"],
-        rating: 4.8,
-        students: 2670,
-        price: 1299
-    },
-    {
-        id: 7,
-        category: "HR Round",
-        title: "HR & Behavioral Interview",
-        duration: "2 Months",
-        level: "All Levels",
-        features: ["Common Questions", "Body Language", "Confidence Building"],
-        rating: 4.5,
-        students: 1890,
-        price: 399
-    },
-    {
-        id: 8,
-        category: "Career Development",
-        title: "Resume Building Workshop",
-        duration: "1 Month",
-        level: "All Levels",
-        features: ["ATS Optimization", "Templates", "Expert Review"],
-        rating: 4.6,
-        students: 2340,
-        price: 299
-    }
-];
-
-const categories = [
-    "All",
-    "Complete Package",
-    "Mock Interviews",
-    "Aptitude",
-    "Company Specific",
-    "Technical",
-    "HR Round",
-    "Career Development"
-];
 
 const Courses = () => {
     const [filter, setFilter] = useState("All");
@@ -237,4 +135,3 @@ const Courses = () => {
 };
 
 export default Courses;
-

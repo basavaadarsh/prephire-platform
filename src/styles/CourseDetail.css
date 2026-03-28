@@ -1,0 +1,687 @@
+/* ============================================================
+   COURSE DETAIL PAGE STYLES
+   ============================================================ */
+
+/* ---------- BACK LINK ---------- */
+.cd-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: none;
+  border: none;
+  color: #6b7280;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 1.5rem;
+  transition: color 0.2s ease;
+}
+.cd-back:hover { color: #2563eb; }
+.cd-back svg { font-size: 1rem; }
+
+/* ---------- HERO SECTION ---------- */
+.cd-hero {
+  background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 50%, #dbeafe 100%);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  margin-bottom: 2rem;
+}
+
+.cd-hero-inner {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Left column */
+.cd-hero-left {
+  flex: 1 1 60%;
+  min-width: 280px;
+}
+
+.cd-badge {
+  display: inline-block;
+  background: #2563eb;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cd-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1a1a2e;
+  margin: 0 0 0.6rem;
+  line-height: 1.2;
+}
+
+.cd-subtitle {
+  font-size: 1.05rem;
+  color: #4b5563;
+  margin: 0 0 1.2rem;
+  line-height: 1.55;
+}
+
+.cd-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.cd-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.88rem;
+  color: #374151;
+  font-weight: 500;
+}
+
+.cd-meta-item svg {
+  font-size: 1rem;
+  color: #6b7280;
+}
+
+.cd-instructor-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.cd-instructor-link svg { font-size: 1rem; }
+
+/* Right column — Price card */
+.cd-hero-right {
+  flex: 0 0 320px;
+}
+
+.cd-price-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 1.8rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e7eb;
+  position: sticky;
+  top: 100px;
+}
+
+.cd-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.3rem;
+}
+
+.cd-price {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1a1a2e;
+}
+
+.cd-price-original {
+  font-size: 1.1rem;
+  color: #9ca3af;
+  text-decoration: line-through;
+}
+
+.cd-price-discount {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #16a34a;
+  background: #f0fdf4;
+  padding: 0.15rem 0.5rem;
+  border-radius: 6px;
+}
+
+.cd-price-note {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  margin-bottom: 1.2rem;
+}
+
+.cd-buy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.85rem;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
+}
+.cd-buy-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+}
+.cd-buy-btn:active {
+  transform: translateY(0);
+}
+.cd-buy-btn svg { font-size: 1.1rem; }
+
+.cd-buy-btn.enrolled {
+  background: #16a34a;
+  cursor: default;
+}
+.cd-buy-btn.enrolled:hover {
+  background: #16a34a;
+  transform: none;
+  box-shadow: none;
+}
+
+.cd-includes {
+  margin-top: 1.4rem;
+}
+
+.cd-includes h4 {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 0.7rem;
+}
+
+.cd-includes-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cd-includes-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #374151;
+  line-height: 1.6;
+  padding: 0.2rem 0;
+}
+
+.cd-includes-list li svg {
+  color: #16a34a;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+}
+
+/* ---------- DESCRIPTION ---------- */
+.cd-description {
+  margin-bottom: 2.5rem;
+}
+
+.cd-description p {
+  font-size: 0.95rem;
+  color: #4b5563;
+  line-height: 1.75;
+}
+
+/* ---------- SECTION TITLE ---------- */
+.cd-section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 1.2rem;
+}
+
+/* ---------- CURRICULUM ACCORDION ---------- */
+.cd-curriculum {
+  margin-bottom: 2.5rem;
+}
+
+.cd-curriculum-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  color: #6b7280;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.cd-dot {
+  color: #d1d5db;
+}
+
+.cd-accordion {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.cd-accordion-item {
+  border-bottom: 1px solid #e5e7eb;
+}
+.cd-accordion-item:last-child {
+  border-bottom: none;
+}
+
+.cd-accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem 1.2rem;
+  background: #f9fafb;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.cd-accordion-header:hover {
+  background: #f3f4f6;
+}
+
+.cd-accordion-item.open .cd-accordion-header {
+  background: #eef2ff;
+}
+
+.cd-accordion-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.cd-accordion-chevron {
+  display: inline-flex;
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+.cd-accordion-module-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  text-align: left;
+}
+
+.cd-accordion-lesson-count {
+  font-size: 0.8rem;
+  color: #6b7280;
+  white-space: nowrap;
+}
+
+.cd-accordion-body {
+  overflow: hidden;
+}
+
+.cd-lesson-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cd-lesson-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.2rem 0.75rem 2.8rem;
+  border-top: 1px solid #f3f4f6;
+  transition: background-color 0.15s ease;
+}
+.cd-lesson-item:hover {
+  background: #fafbfc;
+}
+
+.cd-lesson-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  color: #374151;
+}
+
+.cd-lesson-icon {
+  color: #2563eb;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.cd-lesson-duration {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.78rem;
+  color: #9ca3af;
+  white-space: nowrap;
+}
+.cd-lesson-duration svg { font-size: 0.8rem; }
+
+/* ---------- INSTRUCTOR ---------- */
+.cd-instructor {
+  margin-bottom: 2.5rem;
+}
+
+.cd-instructor-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 1.8rem;
+  transition: box-shadow 0.3s ease;
+}
+.cd-instructor-card:hover {
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+}
+
+.cd-instructor-top {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.cd-instructor-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.cd-instructor-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cd-instructor-initials {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.cd-instructor-identity {
+  display: flex;
+  flex-direction: column;
+}
+
+.cd-instructor-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0;
+}
+
+.cd-instructor-role {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.88rem;
+  color: #6b7280;
+  margin: 0.2rem 0 0;
+}
+
+.cd-instructor-role svg {
+  font-size: 0.95rem;
+  color: #9ca3af;
+}
+
+.cd-instructor-bio {
+  font-size: 0.92rem;
+  color: #4b5563;
+  line-height: 1.7;
+  margin: 0 0 1.4rem;
+}
+
+.cd-instructor-stats {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding-top: 1.2rem;
+  border-top: 1px solid #f3f4f6;
+}
+
+.cd-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.cd-stat-icon {
+  font-size: 1.3rem;
+  color: #2563eb;
+}
+
+.cd-stat-item div {
+  display: flex;
+  flex-direction: column;
+}
+
+.cd-stat-value {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.cd-stat-label {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+/* ---------- ENROLLMENT SUCCESS MODAL ---------- */
+.cd-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.cd-modal {
+  background: #fff;
+  border-radius: 18px;
+  padding: 2.5rem;
+  text-align: center;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+}
+
+.cd-modal-check {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.2rem;
+}
+
+.cd-modal-check svg {
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+.cd-modal h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 0.4rem;
+}
+
+.cd-modal p {
+  font-size: 0.92rem;
+  color: #6b7280;
+  margin: 0 0 0.2rem;
+}
+
+.cd-modal-course-name {
+  font-weight: 700;
+  color: #1a1a2e;
+  font-size: 1rem;
+  margin: 0.5rem 0 1.6rem;
+}
+
+.cd-modal-actions {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cd-modal-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.7rem 1.5rem;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+.cd-modal-btn-primary:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.cd-modal-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.7rem 1.5rem;
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+.cd-modal-btn-secondary:hover {
+  background: #e5e7eb;
+  transform: translateY(-1px);
+}
+
+/* ---------- RATING STARS ---------- */
+.cd-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.cd-rating svg {
+  color: #f59e0b;
+  font-size: 0.95rem;
+}
+
+.cd-rating-value {
+  font-weight: 700;
+  color: #374151;
+  font-size: 0.88rem;
+}
+
+.cd-rating-count {
+  font-size: 0.82rem;
+  color: #9ca3af;
+  margin-left: 0.2rem;
+}
+
+/* ---------- NOT FOUND ---------- */
+.cd-not-found {
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.cd-not-found h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 0.5rem;
+}
+
+.cd-not-found p {
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+}
+
+.cd-not-found-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.7rem 1.4rem;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.cd-not-found-btn:hover { background: #1d4ed8; }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 992px) {
+  .cd-hero-inner {
+    flex-direction: column;
+  }
+  .cd-hero-right {
+    flex: 1 1 100%;
+  }
+  .cd-price-card {
+    position: static;
+  }
+  .cd-title {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .cd-hero {
+    padding: 1.5rem 1rem;
+    border-radius: 12px;
+  }
+  .cd-title {
+    font-size: 1.35rem;
+  }
+  .cd-price-card {
+    padding: 1.2rem;
+  }
+  .cd-accordion-header {
+    padding: 0.8rem 1rem;
+  }
+  .cd-lesson-item {
+    padding-left: 1.6rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+  .cd-instructor-top {
+    flex-direction: column;
+    text-align: center;
+  }
+  .cd-instructor-stats {
+    justify-content: center;
+  }
+  .cd-modal {
+    padding: 1.8rem 1.2rem;
+  }
+}
