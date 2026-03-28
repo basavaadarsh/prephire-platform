@@ -1,5 +1,5 @@
 // ============================================================
-// Centralized Course Data — Single source of truth for all
+// Centralized Course Data — Single source for all
 // course information across the Courses list & details pages.
 // ============================================================
 
