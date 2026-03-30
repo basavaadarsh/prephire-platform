@@ -1,21 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { IoVideocamOutline, IoBulbOutline } from "react-icons/io5";
-import { LiaCheckCircle } from "react-icons/lia";
-import { LuFileSpreadsheet, LuBaggageClaim } from "react-icons/lu";
-import { RiFileList3Line } from "react-icons/ri";
 
 /* ICON MAP */
 const iconMap = {
-  video: IoVideocamOutline,
-  resume: LuFileSpreadsheet,
-  guidance: IoBulbOutline,
-  placement: LuBaggageClaim,
-  corporate: RiFileList3Line
+  video: "bi-camera-video",
+  resume: "bi-file-earmark-text",
+  guidance: "bi-lightbulb",
+  placement: "bi-briefcase",
+  corporate: "bi-file-earmark-ruled"
 };
 
-const ServicesDataCard = ({ icon, title, subtitle, features, price }) => {
-  const IconComponent = iconMap[icon] || IoVideocamOutline;
+const ServicesDataCard = ({ icon, title, subtitle, features, price, serviceId }) => {
+  const iconClass = iconMap[icon] || "bi-camera-video";
 
   return (
     <motion.div
@@ -33,7 +30,7 @@ const ServicesDataCard = ({ icon, title, subtitle, features, price }) => {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.1 }}
       >
-        <IconComponent className="icon-dec fs-2 flex-shrink-0" />
+        <i className={`bi ${iconClass} icon-dec fs-2 flex-shrink-0`} aria-hidden="true" />
         <div>
           <h5 className="m-0 fw-semibold">{title}</h5>
           <p className="m-0 color-light small">{subtitle}</p>
@@ -51,7 +48,7 @@ const ServicesDataCard = ({ icon, title, subtitle, features, price }) => {
             viewport={{ once: true }}
             transition={{ duration: 0.3, delay: index * 0.05 }}
           >
-            <LiaCheckCircle className="mark-icon fs-5 mt-1" />
+            <i className="bi bi-check-circle mark-icon fs-5 mt-1" aria-hidden="true" />
             <span>{feature}</span>
           </motion.li>
         ))}
@@ -68,7 +65,9 @@ const ServicesDataCard = ({ icon, title, subtitle, features, price }) => {
         transition={{ duration: 0.4 }}
       >
         <span className="fw-semibold text-blue">{price}</span>
-        <button className="btn border px-3">Get Started</button>
+        <Link className="btn border px-3" to={`/signup?service=${serviceId}`}>
+          Get Started
+        </Link>
       </motion.div>
     </motion.div>
   );

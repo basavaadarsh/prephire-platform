@@ -1,8 +1,5 @@
 import React, { useState, useMemo, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiShoppingCart, FiCheck } from "react-icons/fi";
-import { HiOutlineFilter } from "react-icons/hi";
-import { IoChevronDownSharp } from "react-icons/io5";
 import CourseCard from "../components/CourseCard";
 import "../styles/Courses.css";
 
@@ -140,7 +137,7 @@ const Courses = () => {
     };
 
     return (
-        <div>
+        <div className="courses-page">
 
             {/* ================= HERO ================= */}
             <motion.div
@@ -159,7 +156,7 @@ const Courses = () => {
                             className="cart-btn"
                             whileTap={{ scale: 0.95 }}
                         >
-                            <FiShoppingCart /> Cart ({cart.length})
+                            <i className="bi bi-cart3" aria-hidden="true" /> Cart ({cart.length})
                         </motion.button>
                     </div>
                 </div>
@@ -168,7 +165,7 @@ const Courses = () => {
             {/* ================= FILTER ================= */}
             <div className="filter-bar">
                 <div className="container d-flex align-items-center gap-2">
-                    <HiOutlineFilter />
+                    <i className="bi bi-funnel" aria-hidden="true" />
                     <span>Filter by:</span>
                     <div className="filter-dropdown" ref={dropdownRef}>
                         <div
@@ -176,7 +173,7 @@ const Courses = () => {
                             onClick={() => setDropdownOpen(!dropdownOpen)}
                         >
                             {filter}
-                            <IoChevronDownSharp />
+                            <i className="bi bi-chevron-down" aria-hidden="true" />
                         </div>
                         <AnimatePresence>
                             {dropdownOpen && (
@@ -194,7 +191,7 @@ const Courses = () => {
                                             onClick={() => { setFilter(cat); setDropdownOpen(false); }}
                                         >
                                             {cat}
-                                            {filter === cat && <FiCheck className="check-icon" />}
+                                            {filter === cat && <i className="bi bi-check check-icon" aria-hidden="true" />}
                                         </div>
                                     ))}
                                 </motion.div>
@@ -207,12 +204,12 @@ const Courses = () => {
             {/* ================= COURSE CARDS ================= */}
             <div className="courses-grid">
                 <div className="container">
-                    <div className="row g-4">
+                    <div className="courses-cards-row">
                         <AnimatePresence mode="wait">
                             {filteredCourses.map((course, index) => (
                                 <motion.div
                                     key={course.id}
-                                    className="col-xl-3 col-lg-4 col-md-6 col-sm-12"
+                                    className="courses-col"
                                     initial={{ opacity: 0, scale: 0.95 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     exit={{ opacity: 0, scale: 0.95 }}

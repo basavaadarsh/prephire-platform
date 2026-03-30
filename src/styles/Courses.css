@@ -1,28 +1,46 @@
 /* ========== COURSES PAGE STYLES ========== */
 
+/* Guard against global style collisions from dashboard.css */
+.courses-page .courses-grid {
+    display: block;
+    grid-template-columns: none;
+    gap: 0;
+}
+
+.courses-page .courses-grid > .container {
+    width: 100%;
+}
+
+.courses-page .course-card {
+    padding: 0;
+    width: 100%;
+}
+
 /* ---------- HERO SECTION ---------- */
 .courses-hero {
-    padding: 3rem 2rem 1.5rem;
+    background: #f1f5f9;
+    padding: 2.75rem 2rem 2.1rem;
 }
 
 .courses-hero h1 {
-    font-size: 2.4rem;
+    font-size: 2.9rem;
     font-weight: 700;
-    color: #1a1a2e;
-    margin-bottom: 0.4rem;
+    color: #0f172a;
+    margin-bottom: 0.5rem;
 }
 
 .courses-hero p {
     color: #6b7280;
-    font-size: 1rem;
+    font-size: 1.05rem;
+    margin: 0;
 }
 
 .courses-header-row {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 1.25rem;
 }
 
 /* ---------- CART BUTTON ---------- */
@@ -32,9 +50,9 @@
     gap: 0.5rem;
     background: #fff;
     border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    padding: 0.6rem 1.4rem;
-    font-size: 1rem;
+    border-radius: 10px;
+    padding: 0.52rem 0.95rem;
+    font-size: 0.95rem;
     font-weight: 500;
     color: #1a1a2e;
     cursor: pointer;
@@ -43,14 +61,14 @@
 }
 
 .cart-btn:hover {
-    background: #20b85a;
-    border-color: #20b85a;
-    color: #fff;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(32, 184, 90, 0.25);
+    background: #fff;
+    border-color: #d1d5db;
+    color: #1a1a2e;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
 }
 
-.cart-btn svg {
+.cart-btn i {
     font-size: 1.1rem;
 }
 
@@ -59,13 +77,14 @@
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    padding: 1.2rem 2rem 1rem;
+    padding: 1.5rem 2rem 1.5rem;
     font-size: 0.92rem;
     font-weight: 600;
     color: #1a1a2e;
+    border-bottom: 1px solid #e5e7eb;
 }
 
-.filter-bar svg {
+.filter-bar i {
     color: #6b7280;
     font-size: 1.1rem;
 }
@@ -103,12 +122,12 @@
     color: #fff;
 }
 
-.filter-toggle svg {
+.filter-toggle i {
     font-size: 0.8rem;
     transition: transform 0.25s ease;
 }
 
-.filter-toggle.open svg {
+.filter-toggle.open i {
     transform: rotate(180deg);
 }
 
@@ -158,26 +177,37 @@
 
 /* ---------- COURSE CARDS GRID ---------- */
 .courses-grid {
-    padding: 1rem 2rem 3rem;
+    padding: 2rem 2rem 2.2rem;
+}
+
+.courses-page .courses-cards-row {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.courses-page .courses-col {
+    min-width: 0;
 }
 
 /* ---------- COURSE CARD ---------- */
 .course-card {
     background: #fff;
     border: 1px solid #e5e7eb;
-    border-radius: 14px;
+    border-radius: 12px;
     overflow: hidden;
     height: 100%;
     display: flex;
     flex-direction: column;
     cursor: pointer;
-    transition: box-shadow 0.3s ease, transform 0.25s ease, border-color 0.25s ease;
+    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.06);
+    transition: box-shadow 0.25s ease, transform 0.2s ease, border-color 0.2s ease;
 }
 
 .course-card:hover {
-    box-shadow: 0 14px 40px rgba(37, 99, 235, 0.15);
-    transform: translateY(-8px);
-    border-color: #93b4f5;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.1);
+    transform: translateY(-2px);
+    border-color: #dbe3f1;
 }
 
 .course-card:active {
@@ -187,19 +217,19 @@
 
 .course-card-thumb {
     background: linear-gradient(135deg, #dbeafe 0%, #c7d9f7 100%);
-    height: 150px;
+    height: 160px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.course-card-thumb svg {
+.course-card-thumb i {
     font-size: 3.2rem;
     color: #2563eb;
 }
 
 .course-card-body {
-    padding: 1.2rem;
+    padding: 1.15rem 1.25rem 1.2rem;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -222,7 +252,7 @@
     font-size: 1.05rem;
     font-weight: 700;
     color: #1a1a2e;
-    margin: 0 0 0.5rem;
+    margin: 0 0 0.55rem;
 }
 
 .course-meta {
@@ -231,7 +261,7 @@
     flex-wrap: wrap;
     font-size: 0.8rem;
     color: #6b7280;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.9rem;
 }
 
 .course-meta span {
@@ -240,14 +270,14 @@
     gap: 0.25rem;
 }
 
-.course-meta svg {
+.course-meta i {
     font-size: 0.85rem;
 }
 
 .course-features {
     list-style: none;
     padding: 0;
-    margin: 0 0 1rem;
+    margin: 0 0 0.9rem;
     flex-grow: 1;
 }
 
@@ -256,7 +286,7 @@
     padding-left: 0.9rem;
     font-size: 0.85rem;
     color: #374151;
-    line-height: 1.9;
+    line-height: 1.8;
 }
 
 .course-features li::before {
@@ -267,7 +297,7 @@
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background-color: #2563eb;
+    background-color: #22c55e;
 }
 
 .course-rating-row {
@@ -285,7 +315,7 @@
     gap: 0.3rem;
 }
 
-.course-rating svg {
+.course-rating i {
     color: #f59e0b;
     font-size: 0.95rem;
 }
@@ -298,7 +328,7 @@
 .course-price {
     font-size: 1.4rem;
     font-weight: 700;
-    color: #1a1a2e;
+    color: #2563eb;
     margin-bottom: 0.8rem;
 }
 
@@ -312,7 +342,7 @@
     color: #fff;
     border: none;
     padding: 0.65rem;
-    border-radius: 8px;
+    border-radius: 7px;
     font-weight: 600;
     font-size: 0.88rem;
     cursor: pointer;
@@ -328,7 +358,7 @@
     background-color: #16a34a;
 }
 
-.btn-add-cart svg {
+.btn-add-cart i {
     font-size: 1rem;
 }
 
@@ -349,6 +379,14 @@
     .courses-grid {
         padding: 1rem;
     }
+
+    .courses-page .courses-cards-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .course-card-body h3 {
+        font-size: 1rem;
+    }
 }
 
 @media (max-width: 576px) {
@@ -358,5 +396,15 @@
 
     .course-card-thumb {
         height: 120px;
+    }
+
+    .courses-page .courses-cards-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 1200px) and (min-width: 993px) {
+    .courses-page .courses-cards-row {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }

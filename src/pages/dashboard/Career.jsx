@@ -1,5 +1,4 @@
 import React, { useMemo, useState } from 'react';
-import { ExternalLink, MapPin, Briefcase, DollarSign } from 'lucide-react';
 import { dashboardData } from '../../data/dashboardData';
 
 const filterOptions = ['All', 'Full-time', 'Part-time', 'Contract', 'Remote'];
@@ -69,9 +68,9 @@ const Career = () => {
                 <span className="job-type">{job.type}</span>
               </div>
               <div className="job-meta">
-                <div><MapPin size={14} /> {job.location}</div>
-                <div><DollarSign size={14} /> {job.salary}</div>
-                <div><Briefcase size={14} /> {job.experience}</div>
+                <div><i className="bi bi-geo-alt" /> {job.location}</div>
+                <div><i className="bi bi-currency-dollar" /> {job.salary}</div>
+                <div><i className="bi bi-briefcase" /> {job.experience}</div>
               </div>
               <div className="job-skills">
                 {job.skills.map((skill) => (
@@ -81,7 +80,7 @@ const Career = () => {
               <div className="job-actions">
                 <button type="button" className="job-btn outline">Save</button>
                 <button type="button" className="job-btn primary">
-                  <ExternalLink size={16} />
+                  <i className="bi bi-box-arrow-up-right" />
                   Apply
                 </button>
               </div>

@@ -1,9 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { HiOutlineBriefcase } from "react-icons/hi";
-import { MdOutlineLocationOn } from "react-icons/md";
-import { LuClock3 } from "react-icons/lu";
 
 const CareerCard = ({ id, title, description, type, location, experience, requirements, index }) => {
     const navigate = useNavigate();
@@ -22,13 +19,13 @@ const CareerCard = ({ id, title, description, type, location, experience, requir
                     <p className="career-card-desc">{description}</p>
                     <div className="career-tags">
                         <span className="career-tag">
-                            <HiOutlineBriefcase /> {type}
+                            <i className="bi bi-briefcase" aria-hidden="true" /> {type}
                         </span>
                         <span className="career-tag">
-                            <MdOutlineLocationOn /> {location}
+                            <i className="bi bi-geo-alt" aria-hidden="true" /> {location}
                         </span>
                         <span className="career-tag">
-                            <LuClock3 /> {experience}
+                            <i className="bi bi-clock" aria-hidden="true" /> {experience}
                         </span>
                     </div>
                 </div>

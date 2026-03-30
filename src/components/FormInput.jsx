@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { FiEye, FiEyeOff } from 'react-icons/fi';
 
 /**
  * Reusable form input with an icon, optional password toggle,
@@ -49,7 +48,7 @@ const FormInput = ({
             onClick={() => setShowPassword((prev) => !prev)}
             aria-label={showPassword ? 'Hide password' : 'Show password'}
           >
-            {showPassword ? <FiEyeOff /> : <FiEye />}
+            <i className={`bi ${showPassword ? 'bi-eye-slash' : 'bi-eye'}`} aria-hidden="true" />
           </button>
         )}
       </div>

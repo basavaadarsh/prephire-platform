@@ -1,5 +1,4 @@
 import React from 'react';
-import { Download, Eye, Trophy } from 'lucide-react';
 import { dashboardData } from '../../data/dashboardData';
 
 const CertificatesDashboard = () => (
@@ -15,7 +14,7 @@ const CertificatesDashboard = () => (
       {dashboardData.certificates.map((certificate) => (
         <div key={certificate.id} className="certificate-card">
           <div className="certificate-icon">
-            <Trophy size={20} />
+            <i className="bi bi-trophy" />
           </div>
           <div className="certificate-title">{certificate.title}</div>
           <div className="certificate-issuer">{certificate.issuer}</div>
@@ -35,11 +34,11 @@ const CertificatesDashboard = () => (
           </div>
           <div className="certificate-actions">
             <button type="button" className="certificate-button view">
-              <Eye size={16} />
+              <i className="bi bi-eye" />
               View
             </button>
             <button type="button" className="certificate-button download">
-              <Download size={16} />
+              <i className="bi bi-download" />
               Download
             </button>
           </div>

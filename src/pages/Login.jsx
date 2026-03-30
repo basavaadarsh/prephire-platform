@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { HiOutlineMail } from 'react-icons/hi';
-import { FiLock } from 'react-icons/fi';
+import { Link, useNavigate } from 'react-router-dom';
 import FormInput from '../components/FormInput';
 import SocialLoginGroup from '../components/SocialLoginGroup';
+import { dashboardData } from '../data/dashboardData';
 
 const Login = () => {
   const [form, setForm] = useState({ email: '', password: '', rememberMe: false });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   // Update a single form field and clear its error on change
   const handleChange = (field, value) => {
@@ -53,8 +53,17 @@ const Login = () => {
 
     setTimeout(() => {
       setLoading(false);
-      // TODO: handle response — redirect or show error
-    }, 1500);
+      const stored = localStorage.getItem('userProfile');
+      if (!stored) {
+        const nextProfile = {
+          ...dashboardData.user,
+          email: form.email,
+        };
+        localStorage.setItem('userProfile', JSON.stringify(nextProfile));
+        window.dispatchEvent(new Event('userProfileUpdated'));
+      }
+      navigate('/dashboard');
+    }, 1200);
   };
 
   return (
@@ -63,7 +72,7 @@ const Login = () => {
 
       <form onSubmit={handleLogin} noValidate>
         <FormInput
-          icon={<HiOutlineMail />}
+          icon={<i className="bi bi-envelope" aria-hidden="true" />}
           type="email"
           placeholder="Your email"
           value={form.email}
@@ -73,7 +82,7 @@ const Login = () => {
         />
 
         <FormInput
-          icon={<FiLock />}
+          icon={<i className="bi bi-lock" aria-hidden="true" />}
           type="password"
           placeholder="Password"
           value={form.password}

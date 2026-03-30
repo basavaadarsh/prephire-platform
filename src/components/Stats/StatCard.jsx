@@ -1,16 +1,12 @@
 import React, { useMemo } from "react";
 import { useCountUp } from "./useCountUp";
-import { HiOutlineUsers } from "react-icons/hi2";
-import { HiOutlineTrophy } from "react-icons/hi2";
-import { HiOutlineArrowTrendingUp } from "react-icons/hi2";
-import { HiOutlineStar } from "react-icons/hi2";
 import "./stats.css";
 
 const iconMap = {
-  users: <HiOutlineUsers size={28} />,
-  award: <HiOutlineTrophy size={28} />,
-  trending: <HiOutlineArrowTrendingUp size={28} />,
-  star: <HiOutlineStar size={28} />,
+  users: <i className="bi bi-people" aria-hidden="true" />,
+  award: <i className="bi bi-trophy" aria-hidden="true" />,
+  trending: <i className="bi bi-graph-up" aria-hidden="true" />,
+  star: <i className="bi bi-star" aria-hidden="true" />,
 };
 
 const StatCard = React.memo(({ title, value, suffix, icon }) => {

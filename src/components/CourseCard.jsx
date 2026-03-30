@@ -1,10 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { HiOutlineBookOpen } from "react-icons/hi";
-import { LuClock3 } from "react-icons/lu";
-import { RiGraduationCapLine } from "react-icons/ri";
-import { FiShoppingCart, FiCheck } from "react-icons/fi";
-import { FaStar } from "react-icons/fa";
 
 const CourseCard = ({ course, onAddToCart, isInCart, index }) => {
     return (
@@ -16,7 +11,7 @@ const CourseCard = ({ course, onAddToCart, isInCart, index }) => {
             transition={{ duration: 0.45, delay: index * 0.08 }}
         >
             <div className="course-card-thumb">
-                <HiOutlineBookOpen />
+                <i className="bi bi-book" aria-hidden="true" />
             </div>
 
             <div className="course-card-body">
@@ -24,8 +19,8 @@ const CourseCard = ({ course, onAddToCart, isInCart, index }) => {
                 <h3>{course.title}</h3>
 
                 <div className="course-meta">
-                    <span><LuClock3 /> {course.duration}</span>
-                    <span><RiGraduationCapLine /> {course.level}</span>
+                    <span><i className="bi bi-clock" aria-hidden="true" /> {course.duration}</span>
+                    <span><i className="bi bi-mortarboard" aria-hidden="true" /> {course.level}</span>
                 </div>
 
                 <ul className="course-features">
@@ -36,7 +31,7 @@ const CourseCard = ({ course, onAddToCart, isInCart, index }) => {
 
                 <div className="course-rating-row">
                     <div className="course-rating">
-                        <FaStar />
+                        <i className="bi bi-star-fill" aria-hidden="true" />
                         <span>{course.rating}</span>
                     </div>
                     <span>{course.students.toLocaleString()} students</span>
@@ -51,11 +46,11 @@ const CourseCard = ({ course, onAddToCart, isInCart, index }) => {
                 >
                     {isInCart ? (
                         <>
-                            <FiCheck /> Added
+                            <i className="bi bi-check" aria-hidden="true" /> Added
                         </>
                     ) : (
                         <>
-                            <FiShoppingCart /> Add to Cart
+                            <i className="bi bi-cart3" aria-hidden="true" /> Add to Cart
                         </>
                     )}
                 </motion.button>

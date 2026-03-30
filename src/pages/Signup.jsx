@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { HiOutlineMail } from 'react-icons/hi';
-import { FiLock, FiUser, FiPhone } from 'react-icons/fi';
+import React, { useMemo, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import FormInput from '../components/FormInput';
 import SocialLoginGroup from '../components/SocialLoginGroup';
+import { dashboardData } from '../data/dashboardData';
 
 // Returns 'weak', 'medium', or 'strong' based on the password value
 const getPasswordStrength = (pwd) => {
@@ -20,6 +19,8 @@ const getPasswordStrength = (pwd) => {
 };
 
 const Signup = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     fullName: '',
     email: '',
@@ -31,6 +32,11 @@ const Signup = () => {
 
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+
+  const selectedService = useMemo(() => {
+    const params = new URLSearchParams(location.search);
+    return params.get('service');
+  }, [location.search]);
 
   const passwordStrength = getPasswordStrength(form.password);
 
@@ -108,8 +114,23 @@ const Signup = () => {
 
     setTimeout(() => {
       setLoading(false);
-      // TODO: handle response — redirect or show success message
-    }, 1500);
+      const baseProfile = dashboardData.user;
+      const nextProfile = {
+        ...baseProfile,
+        name: form.fullName,
+        email: form.email,
+        phone: form.phone,
+        role: baseProfile.role || 'Student',
+        selectedServiceInterest: selectedService || '',
+      };
+      localStorage.setItem('userProfile', JSON.stringify(nextProfile));
+      window.dispatchEvent(new Event('userProfileUpdated'));
+      if (selectedService) {
+        navigate('/dashboard/my-services');
+        return;
+      }
+      navigate('/dashboard');
+    }, 1200);
   };
 
   return (
@@ -118,7 +139,7 @@ const Signup = () => {
 
       <form onSubmit={handleSignup} noValidate>
         <FormInput
-          icon={<FiUser />}
+          icon={<i className="bi bi-person" aria-hidden="true" />}
           type="text"
           placeholder="Full Name"
           value={form.fullName}
@@ -128,7 +149,7 @@ const Signup = () => {
         />
 
         <FormInput
-          icon={<HiOutlineMail />}
+          icon={<i className="bi bi-envelope" aria-hidden="true" />}
           type="email"
           placeholder="Your email"
           value={form.email}
@@ -138,7 +159,7 @@ const Signup = () => {
         />
 
         <FormInput
-          icon={<FiPhone />}
+          icon={<i className="bi bi-telephone" aria-hidden="true" />}
           type="tel"
           placeholder="Phone number"
           value={form.phone}
@@ -148,7 +169,7 @@ const Signup = () => {
         />
 
         <FormInput
-          icon={<FiLock />}
+          icon={<i className="bi bi-lock" aria-hidden="true" />}
           type="password"
           placeholder="Password"
           value={form.password}
@@ -170,7 +191,7 @@ const Signup = () => {
         )}
 
         <FormInput
-          icon={<FiLock />}
+          icon={<i className="bi bi-lock" aria-hidden="true" />}
           type="password"
           placeholder="Confirm Password"
           value={form.confirmPassword}

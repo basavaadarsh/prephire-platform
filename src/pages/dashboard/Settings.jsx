@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Bell, Eye, EyeOff, Lock, Save } from 'lucide-react';
 import { dashboardData } from '../../data/dashboardData';
 
 const notificationOptions = [
@@ -84,179 +83,179 @@ const Settings = () => {
     >
       <div className="page-header">
         <div>
-          <h1 className="page-title text-slate-900 text-2xl font-semibold">Settings</h1>
-          <p className="page-subtitle text-slate-500">Manage your account and preferences</p>
+          <h1 className="page-title">Settings</h1>
+          <p className="page-subtitle">Manage your account and preferences</p>
         </div>
       </div>
 
-      <div className="space-y-6">
-        <section className="rounded-2xl border border-slate-100 bg-white p-8 shadow-sm">
-          <h2 className="text-xl font-semibold text-slate-900">Account Settings</h2>
-          <div className="mt-6 space-y-4">
+      <div className="settings-stack">
+        <section className="settings-section">
+          <h2 className="settings-title">Account Settings</h2>
+          <div className="settings-grid">
             <div>
-              <label className="text-sm font-semibold text-slate-900" htmlFor="settings-name">Full Name</label>
+              <label className="form-label" htmlFor="settings-name">Full Name</label>
               <input
                 id="settings-name"
                 type="text"
                 value={formData.fullName}
                 onChange={updateForm('fullName')}
-                className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm text-slate-700 placeholder:text-slate-400 focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                className="form-control"
                 placeholder="Full name"
               />
             </div>
             <div>
-              <label className="text-sm font-semibold text-slate-900" htmlFor="settings-email">Email Address</label>
+              <label className="form-label" htmlFor="settings-email">Email Address</label>
               <input
                 id="settings-email"
                 type="email"
                 value={formData.email}
                 onChange={updateForm('email')}
-                className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm text-slate-700 placeholder:text-slate-400 focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                className="form-control"
                 placeholder="name@example.com"
               />
             </div>
             <div>
-              <label className="text-sm font-semibold text-slate-900" htmlFor="settings-title">Job Title</label>
+              <label className="form-label" htmlFor="settings-title">Job Title</label>
               <input
                 id="settings-title"
                 type="text"
                 value={formData.jobTitle}
                 onChange={updateForm('jobTitle')}
-                className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm text-slate-700 placeholder:text-slate-400 focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                className="form-control"
                 placeholder="Job title"
               />
             </div>
             <div>
-              <label className="text-sm font-semibold text-slate-900" htmlFor="settings-location">Location</label>
+              <label className="form-label" htmlFor="settings-location">Location</label>
               <input
                 id="settings-location"
                 type="text"
                 value={formData.location}
                 onChange={updateForm('location')}
-                className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm text-slate-700 placeholder:text-slate-400 focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                className="form-control"
                 placeholder="City, Country"
               />
             </div>
           </div>
           <button
             type="button"
-            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700"
+            className="btn btn-primary settings-action"
           >
-            <Save size={16} />
+            <i className="bi bi-save" />
             Save Changes
           </button>
         </section>
 
-        <section className="rounded-2xl border border-slate-100 bg-white p-8 shadow-sm">
-          <div className="flex items-center gap-3">
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-red-50 text-red-500">
-              <Lock size={18} />
+        <section className="settings-section">
+          <div className="settings-section-header">
+            <span className="settings-icon danger">
+              <i className="bi bi-lock" />
             </span>
-            <h2 className="text-xl font-semibold text-slate-900">Password &amp; Security</h2>
+            <h2 className="settings-title">Password &amp; Security</h2>
           </div>
-          <div className="mt-6 space-y-4">
+          <div className="settings-grid">
             <div>
-              <label className="text-sm font-semibold text-slate-900" htmlFor="settings-current">Current Password</label>
-              <div className="relative mt-2">
+              <label className="form-label" htmlFor="settings-current">Current Password</label>
+              <div className="settings-input-wrap">
                 <input
                   id="settings-current"
                   type={showCurrent ? 'text' : 'password'}
                   value={passwordData.current}
                   onChange={updatePassword('current')}
-                  className="w-full rounded-xl border border-slate-200 px-4 py-2.5 pr-10 text-sm text-slate-700 placeholder:text-slate-400 focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                  className="form-control"
                   placeholder="Enter your current password"
                 />
                 <button
                   type="button"
                   onClick={() => setShowCurrent((prev) => !prev)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400"
+                  className="settings-eye"
                 >
-                  {showCurrent ? <EyeOff size={18} /> : <Eye size={18} />}
+                  <i className={`bi ${showCurrent ? 'bi-eye-slash' : 'bi-eye'}`} />
                 </button>
               </div>
             </div>
             <div>
-              <label className="text-sm font-semibold text-slate-900" htmlFor="settings-new">New Password</label>
+              <label className="form-label" htmlFor="settings-new">New Password</label>
               <input
                 id="settings-new"
                 type="password"
                 value={passwordData.next}
                 onChange={updatePassword('next')}
-                className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm text-slate-700 placeholder:text-slate-400 focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                className="form-control"
                 placeholder="Enter your new password"
               />
             </div>
             <div>
-              <label className="text-sm font-semibold text-slate-900" htmlFor="settings-confirm">Confirm New Password</label>
+              <label className="form-label" htmlFor="settings-confirm">Confirm New Password</label>
               <input
                 id="settings-confirm"
                 type="password"
                 value={passwordData.confirm}
                 onChange={updatePassword('confirm')}
-                className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm text-slate-700 placeholder:text-slate-400 focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                className="form-control"
                 placeholder="Confirm your new password"
               />
               {passwordError ? (
-                <p className="mt-2 text-xs font-medium text-red-500">{passwordError}</p>
+                <p className="settings-error">{passwordError}</p>
               ) : null}
             </div>
           </div>
           <button
             type="button"
             onClick={handlePasswordSubmit}
-            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-red-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-red-700"
+            className="btn btn-danger settings-action"
           >
-            <Lock size={16} />
+            <i className="bi bi-lock" />
             Update Password
           </button>
         </section>
 
-        <section className="rounded-2xl border border-slate-100 bg-white p-8 shadow-sm">
-          <div className="flex items-center gap-3">
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-blue-50 text-blue-600">
-              <Bell size={18} />
+        <section className="settings-section">
+          <div className="settings-section-header">
+            <span className="settings-icon">
+              <i className="bi bi-bell" />
             </span>
-            <h2 className="text-xl font-semibold text-slate-900">Notification Preferences</h2>
+            <h2 className="settings-title">Notification Preferences</h2>
           </div>
-          <div className="mt-6 space-y-3">
+          <div className="settings-checklist">
             {notificationOptions.map((option) => (
               <label
                 key={option.id}
                 htmlFor={`notify-${option.id}`}
-                className="flex items-start gap-4 rounded-xl bg-slate-50/50 px-4 py-3"
+                className="settings-check-item"
               >
                 <input
                   id={`notify-${option.id}`}
                   type="checkbox"
                   checked={activeNotifications.includes(option.id)}
                   onChange={() => toggleNotification(option.id)}
-                  className="mt-1 h-4 w-4 accent-red-600"
+                  className="settings-checkbox"
                 />
                 <div>
-                  <p className="text-sm font-semibold text-slate-900">{option.title}</p>
-                  <p className="text-xs text-slate-500">{option.description}</p>
+                  <p className="settings-check-title">{option.title}</p>
+                  <p className="settings-check-text">{option.description}</p>
                 </div>
               </label>
             ))}
           </div>
           <button
             type="button"
-            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700"
+            className="btn btn-primary settings-action"
           >
-            <Save size={16} />
+            <i className="bi bi-save" />
             Save Preferences
           </button>
         </section>
 
-        <section className="rounded-2xl border border-blue-100 bg-blue-50 p-8">
-          <h3 className="text-lg font-semibold text-slate-900">About PrepHire CareerForge</h3>
-          <p className="mt-3 text-sm text-slate-600">
+        <section className="settings-about">
+          <h3>About PrepHire CareerForge</h3>
+          <p>
             PrepHire CareerForge is your comprehensive career development platform. We help
             professionals master skills, discover opportunities, and achieve their career goals.
           </p>
-          <div className="mt-4 space-y-1 text-sm font-semibold text-blue-600">
-            <p>Version: 1.0.0</p>
-            <p>Last Updated: March 2024</p>
+          <div className="settings-meta">
+            <span>Version: 1.0.0</span>
+            <span>Last Updated: March 2024</span>
           </div>
         </section>
       </div>

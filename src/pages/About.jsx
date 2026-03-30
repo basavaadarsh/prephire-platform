@@ -4,11 +4,6 @@ import AboutCard from "../components/AboutCard";
 import AboutProfile from "../components/AboutProfile";
 import teamData from "../data/teamData";
 
-import { FaBullseye } from "react-icons/fa6";
-import { IoEyeOutline } from "react-icons/io5";
-import { GiHumanPyramid } from "react-icons/gi";
-import { PiMedalLight } from "react-icons/pi";
-
 const About = () => {
 
   /* ---------------- Skeleton Loader ---------------- */
@@ -50,25 +45,25 @@ const About = () => {
 
   const aboutData = [
     {
-      icon: FaBullseye,
+      iconClass: "bi-bullseye",
       title: "Our Mission",
       description:
         "To empower students and job seekers with the skills and confidence needed to ace interviews and secure their dream jobs."
     },
     {
-      icon: IoEyeOutline,
+      iconClass: "bi-eye",
       title: "Our Vision",
       description:
         "To become India's most trusted interview preparation platform, bridging the gap between talent and opportunity."
     },
     {
-      icon: GiHumanPyramid,
+      iconClass: "bi-people",
       title: "Our Approach",
       description:
         "Personalized mentoring, real-world mock interviews, and comprehensive skill development programs."
     },
     {
-      icon: PiMedalLight,
+      iconClass: "bi-award",
       title: "Our Impact",
       description:
         "10,000+ students placed in top companies with an 85% success rate and counting."

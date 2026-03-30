@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { HiOutlineBell, HiOutlineChevronDown, HiOutlineUser, HiOutlineArrowRightOnRectangle } from 'react-icons/hi2';
-import { Search } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { dashboardData } from '../../data/dashboardData';
 
@@ -12,7 +10,7 @@ const getInitials = (name = '') => name
   .join('')
   .toUpperCase();
 
-const Navbar = ({ onToggleSidebar, user, onLogout }) => {
+const Navbar = ({ onToggleSidebar, user, onLogout, onNotify }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
   const navigate = useNavigate();
@@ -32,6 +30,19 @@ const Navbar = ({ onToggleSidebar, user, onLogout }) => {
     navigate('/dashboard/profile');
   };
 
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    if (onNotify) {
+      onNotify({ type: 'info', message: 'Search feature coming soon' });
+    }
+  };
+
+  const handleNotificationClick = () => {
+    if (onNotify) {
+      onNotify({ type: 'info', message: 'No new notifications' });
+    }
+  };
+
   return (
     <header className="dashboard-navbar">
       <div className="navbar-left">
@@ -47,22 +58,23 @@ const Navbar = ({ onToggleSidebar, user, onLogout }) => {
         </button>
       </div>
       <div className="navbar-search center">
-        <div className="search-input">
-          <Search size={16} />
+        <form className="search-input" onSubmit={handleSearchSubmit}>
+          <i className="bi bi-search" aria-hidden="true" />
           <input
             type="search"
             placeholder={dashboardData.ui.searchDashboard}
             aria-label={dashboardData.ui.searchDashboard}
           />
-        </div>
+        </form>
       </div>
       <div className="navbar-user" ref={menuRef}>
         <button
           type="button"
           className="navbar-icon notification"
           aria-label={dashboardData.ui.aria.notifications}
+          onClick={handleNotificationClick}
         >
-          <HiOutlineBell />
+          <i className="bi bi-bell" aria-hidden="true" />
           <span className="notification-badge">{dashboardData.ui.notificationCount}</span>
         </button>
         <div className="navbar-user-info">
@@ -87,12 +99,12 @@ const Navbar = ({ onToggleSidebar, user, onLogout }) => {
               {getInitials(user.name)}
             </div>
           )}
-          <HiOutlineChevronDown className="navbar-caret" />
+          <i className="bi bi-chevron-down navbar-caret" aria-hidden="true" />
         </button>
         {menuOpen && (
           <div className="navbar-menu" role="menu">
             <button type="button" className="navbar-menu-item" role="menuitem" onClick={handleProfileClick}>
-              <HiOutlineUser /> Profile
+              <i className="bi bi-person" aria-hidden="true" /> Profile
             </button>
             <button
               type="button"
@@ -103,7 +115,7 @@ const Navbar = ({ onToggleSidebar, user, onLogout }) => {
                 if (onLogout) onLogout();
               }}
             >
-              <HiOutlineArrowRightOnRectangle /> Logout
+              <i className="bi bi-box-arrow-right" aria-hidden="true" /> Logout
             </button>
           </div>
         )}

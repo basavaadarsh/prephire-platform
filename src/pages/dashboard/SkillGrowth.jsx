@@ -1,5 +1,4 @@
 import React from 'react';
-import { HiOutlineSparkles } from 'react-icons/hi2';
 import { motion } from 'framer-motion';
 
 const SkillGrowth = () => (
@@ -17,7 +16,7 @@ const SkillGrowth = () => (
     </div>
     <div className="empty-state">
       <div className="empty-icon">
-        <HiOutlineSparkles />
+        <i className="bi bi-stars" />
       </div>
       <div className="empty-title">No skill progress yet.</div>
       <div className="empty-text">Complete a lesson to unlock skill insights.</div>

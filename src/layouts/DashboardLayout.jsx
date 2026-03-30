@@ -6,7 +6,7 @@ import Toast from '../components/dashboard/Toast';
 import ConfirmModal from '../components/dashboard/ConfirmModal';
 import DashboardSkeleton from '../components/dashboard/DashboardSkeleton';
 import { dashboardData } from '../data/dashboardData';
-import '../styles/Dashboard.css';
+import '../styles/dashboard.css';
 
 const STORAGE_KEY = 'userProfile';
 
@@ -89,6 +89,7 @@ const DashboardLayout = () => {
           onToggleSidebar={handleToggleSidebar}
           user={activeUser}
           onLogout={handleRequestLogout}
+          onNotify={showToast}
         />
         <main className="dashboard-content">
           {isLoading ? (

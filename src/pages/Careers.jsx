@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { GoChevronRight } from "react-icons/go";
 import CareerCard from "../components/CareerCard";
 import { benefits, openPositions, internships } from "../data/CareerData";
 import "../styles/Career.css";
@@ -51,7 +50,7 @@ const Careers = () => {
                                 transition={{ duration: 0.4, delay: index * 0.08 }}
                             >
                                 <div className="benefit-item">
-                                    <GoChevronRight className="benefit-icon" />
+                                    <i className="bi bi-chevron-right benefit-icon" aria-hidden="true" />
                                     <span>{item}</span>
                                 </div>
                             </motion.div>

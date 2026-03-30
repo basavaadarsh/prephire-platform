@@ -1,5 +1,4 @@
 import React from 'react';
-import { HiOutlineChartBarSquare } from 'react-icons/hi2';
 import { motion } from 'framer-motion';
 
 const InterviewsSuccess = () => (
@@ -17,7 +16,7 @@ const InterviewsSuccess = () => (
     </div>
     <div className="empty-state">
       <div className="empty-icon">
-        <HiOutlineChartBarSquare />
+        <i className="bi bi-bar-chart" />
       </div>
       <div className="empty-title">No interview data yet.</div>
       <div className="empty-text">Complete interviews to see success rates.</div>

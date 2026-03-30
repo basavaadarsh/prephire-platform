@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const AboutCard = ({ icon: Icon, title, description }) => {
+const AboutCard = ({ iconClass, title, description }) => {
   return (
     <motion.div
       className="col-12 col-sm-6 col-lg-6 mb-4"
@@ -15,13 +15,13 @@ const AboutCard = ({ icon: Icon, title, description }) => {
       <div className="card p-4 shadow rounded-4 border-0 h-100">
 
         <div className="d-flex align-items-center mb-3">
-          {Icon && (
+          {iconClass && (
             <motion.div
               whileHover={{ rotate: 10 }}
               transition={{ type: "spring", stiffness: 200 }}
               className="me-3 icon-dec"
             >
-              <Icon size={30} />
+              <i className={`bi ${iconClass} fs-3`} aria-hidden="true" />
             </motion.div>
           )}
           <h5 className="fw-bold mb-0">{title}</h5>

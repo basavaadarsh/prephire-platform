@@ -2,6 +2,7 @@
 export const servicesData = [
   {
     id: 1,
+    slug: "mock-interviews",
     icon: "video",
     title: "Mock Interviews",
     subtitle: "Practice with industry experts in a real interview environment",
@@ -16,6 +17,7 @@ export const servicesData = [
   },
   {
     id: 2,
+    slug: "resume-review",
     icon: "resume",
     title: "Resume Review",
     subtitle: "Get your resume reviewed and optimized by HR professionals",
@@ -30,6 +32,7 @@ export const servicesData = [
   },
   {
     id: 3,
+    slug: "interview-guidance",
     icon: "guidance",
     title: "Interview Guidance",
     subtitle: "Personal mentoring sessions to boost your interview skills",
@@ -44,6 +47,7 @@ export const servicesData = [
   },
   {
     id: 4,
+    slug: "placement-support",
     icon: "placement",
     title: "Placement Support",
     subtitle: "End-to-end assistance in landing your dream job",
@@ -58,6 +62,7 @@ export const servicesData = [
   },
   {
     id: 5,
+    slug: "corporate-training",
     icon: "corporate",
     title: "Corporate Training",
     subtitle: "Customized training programs for organizations",

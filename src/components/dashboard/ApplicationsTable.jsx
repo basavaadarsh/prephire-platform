@@ -1,9 +1,10 @@
 import React from 'react';
-import { HiOutlineInbox } from 'react-icons/hi2';
-import { Calendar, MapPin } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { dashboardData } from '../../data/dashboardData';
 
 const ApplicationsTable = ({ applications }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="applications-card">
       <div className="applications-header">
@@ -16,10 +17,17 @@ const ApplicationsTable = ({ applications }) => {
       {applications.length === 0 ? (
         <div className="empty-state">
           <div className="empty-icon">
-            <HiOutlineInbox />
+            <i className="bi bi-inbox" />
           </div>
           <div className="empty-title">{dashboardData.ui.emptyApplicationsTitle}</div>
           <div className="empty-text">{dashboardData.ui.noApplications}</div>
+          <button
+            type="button"
+            className="btn btn-primary btn-sm"
+            onClick={() => navigate('/dashboard/career')}
+          >
+            Browse Jobs
+          </button>
         </div>
       ) : (
         <div className="table-wrapper">
@@ -40,7 +48,7 @@ const ApplicationsTable = ({ applications }) => {
                   <td>{application.company}</td>
                   <td>
                     <span className="table-meta">
-                      <MapPin size={14} />
+                      <i className="bi bi-geo-alt" />
                       {application.location}
                     </span>
                   </td>
@@ -51,7 +59,7 @@ const ApplicationsTable = ({ applications }) => {
                   </td>
                   <td>
                     <span className="table-meta">
-                      <Calendar size={14} />
+                      <i className="bi bi-calendar3" />
                       {application.date}
                     </span>
                   </td>

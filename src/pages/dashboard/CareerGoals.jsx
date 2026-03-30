@@ -1,5 +1,4 @@
 import React from 'react';
-import { CalendarDays, TrendingUp } from 'lucide-react';
 import { dashboardData } from '../../data/dashboardData';
 
 const CareerGoals = () => (
@@ -31,11 +30,11 @@ const CareerGoals = () => (
           </div>
           <progress className="goal-progress" value={goal.progress} max="100" />
           <div className="goal-due">
-            <CalendarDays size={16} />
+            <i className="bi bi-calendar3" />
             <span>Due: {goal.due}</span>
           </div>
           <button type="button" className="goal-action">
-            <TrendingUp size={16} />
+            <i className="bi bi-graph-up" />
             View Details
           </button>
         </div>

@@ -1,5 +1,4 @@
 import React, { useMemo, useState } from 'react';
-import { Clock, User } from 'lucide-react';
 import { dashboardData } from '../../data/dashboardData';
 
 const CoursesDashboard = () => {
@@ -66,7 +65,7 @@ const CoursesDashboard = () => {
               <div className="learning-course-provider">{course.provider}</div>
               <div className="learning-course-title">{course.title}</div>
               <div className="learning-course-instructor">
-                <User size={14} />
+                <i className="bi bi-person" />
                 <span>{course.instructor}</span>
               </div>
               <div className="learning-course-progress-row">
@@ -76,7 +75,7 @@ const CoursesDashboard = () => {
               <progress className="learning-course-progress" value={course.progress} max="100" />
               <div className="learning-course-footer">
                 <div className="learning-course-time">
-                  <Clock size={14} />
+                  <i className="bi bi-clock" />
                   <span>{course.hours} hours</span>
                 </div>
                 <button

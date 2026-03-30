@@ -1,35 +1,24 @@
 import React from 'react';
 import { useOutletContext } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import {
-  BookMarked,
-  Building2,
-  AlarmClock,
-  Award,
-  Target,
-  TrendingUp,
-  BookOpen,
-  Briefcase,
-  Clock,
-} from 'lucide-react';
 import StatCard from '../../components/dashboard/StatCard';
 import AnalyticsCharts from '../../components/dashboard/charts/AnalyticsCharts';
 import { dashboardData } from '../../data/dashboardData';
 
 const iconMap = {
-  courses: <BookMarked size={22} />,
-  applications: <Building2 size={22} />,
-  interviews: <AlarmClock size={22} />,
-  certificates: <Award size={22} />,
-  skills: <Target size={22} />,
-  profile: <TrendingUp size={22} />,
+  courses: <i className="bi bi-journal-bookmark" />,
+  applications: <i className="bi bi-buildings" />,
+  interviews: <i className="bi bi-alarm" />,
+  certificates: <i className="bi bi-award" />,
+  skills: <i className="bi bi-bullseye" />,
+  profile: <i className="bi bi-graph-up" />,
 };
 
 const quickActionIcons = {
-  book: <BookOpen size={20} />,
-  briefcase: <Briefcase size={20} />,
-  clock: <Clock size={20} />,
-  target: <Target size={20} />,
+  book: <i className="bi bi-book" />,
+  briefcase: <i className="bi bi-briefcase" />,
+  clock: <i className="bi bi-clock" />,
+  target: <i className="bi bi-bullseye" />,
 };
 
 const DashboardHome = () => {
